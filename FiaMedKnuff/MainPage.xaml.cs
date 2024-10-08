@@ -26,5 +26,15 @@ namespace FiaMedKnuff
         {
             this.InitializeComponent();
         }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // TBD Link to Settings Page
+        }
+
+        private void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // TBD Link to Game view Page
+        }
     }
 }

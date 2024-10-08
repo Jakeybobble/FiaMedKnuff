@@ -6,10 +6,26 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{StaticResource StandardOrange}">
 
-    <Grid>
-        <!--This is a Test-->
+    <StackPanel>
+        <Grid>
+            <Button Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" Margin="0,20,20,0" VerticalAlignment="Top" Click="SettingsBtn_Click">
+                <Image Width="65" Height="65" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/gear-icon-png-2221.png"/>
+            </Button>
 
-    </Grid>
+            <Grid Width="1035" Height="525" Background="{StaticResource StandardWhite}" HorizontalAlignment="Left" Margin="95,230,0,-230" CornerRadius="15" BorderThickness="5" BorderBrush="Black" >
+                <TextBlock Width="650" Height="165" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Fia med Knuff - Återkomsten" Foreground="{StaticResource StandardText}" FontSize="70" FontFamily="Inconsolata" TextWrapping="Wrap" FontWeight="Bold" Margin="80,30,0,0"/>
+
+                <Button Width="270" Height="75" Content="Nytt Spel" Background="{StaticResource OrangeButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" Margin="95,0,0,0" HorizontalAlignment="Left" Click="NyttSpelBtn_Click" />
+
+                <TextBlock Width="800" Height="70" HorizontalAlignment="Left" Text="Av Erika, Abbas, Henrik och Jacob" Foreground="{StaticResource StandardText}" FontSize="50" FontFamily="Inconsolata" TextWrapping="Wrap" Margin="95,325,0,127"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="95,390,0,35"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="185,390,0,35"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="275,390,0,35"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="365,390,0,35"/>
+                                
+            </Grid>
+        </Grid>
+    </StackPanel>
 </Page>
