@@ -82,10 +82,9 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Border Style="{StaticResource CommonBorder}" CornerRadius="100" Background="White">
-                                    <Ellipse Grid.Row="0" Grid.Column="0" Fill="SteelBlue"/>
-                                </Border>
-                                
+                                <!-- Each and every tile -->
+                                <local:TileControl ImageSource="Assets/test_pawn.png" ImageVisibility="Visible" Grid.Column="4" Grid.Row="0"/>
+
                             </Grid>
                         </Grid>
                     </Grid>

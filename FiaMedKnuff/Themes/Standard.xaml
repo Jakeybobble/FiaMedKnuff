@@ -12,10 +12,12 @@
     <SolidColorBrush Color="#1C49DF" x:Key="BlueTeam"/>
     <SolidColorBrush Color="#FFD900" x:Key="YellowTeam"/>
 
+    <SolidColorBrush Color="#FFFFFF" x:Key="StandardTile"/>
+
     <SolidColorBrush Color="#FFA11D" x:Key="OrangeButton"/>
     <SolidColorBrush Color="#FFD478" x:Key="OrangeButtonHovered"/>
     <SolidColorBrush Color="#9D3700" x:Key="OrangeButtonClicked"/>
 
     <SolidColorBrush Color="#FFFFFF" x:Key="WhiteButton"/>
-    <SolidColorBrush Color="#A7D2E8" x:Key="WhiteButtonHovered"/>
+    <SolidColorBrush Color="#A7D2E8" x:Key="WhiteButtonClicked"/>
 </ResourceDictionary>
