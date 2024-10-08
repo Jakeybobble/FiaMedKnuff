@@ -5,6 +5,7 @@
     <SolidColorBrush Color="#FFFFFF" x:Key="StandardWhite"/>
     <SolidColorBrush Color="#8D8D8D" x:Key="DescriptionGray"/>
     <SolidColorBrush Color="#000000" x:Key="StandardText"/>
+    <SolidColorBrush Color="#000000" x:Key="Border"/>
 
     <SolidColorBrush Color="#DC2020" x:Key="ReadTeam"/>
     <SolidColorBrush Color="#2EBA0C" x:Key="GreenTeam"/>
