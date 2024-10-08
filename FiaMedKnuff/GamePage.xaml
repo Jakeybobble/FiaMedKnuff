@@ -83,7 +83,8 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <!-- Each and every tile -->
-                                <local:TileControl ImageSource="Assets/test_pawn.png" ImageVisibility="Visible" Grid.Column="4" Grid.Row="0"/>
+                                <local:TileControl ImageSource="Assets/test_pawn.png" BackgroundColor="Red" ImageVisibility="Visible" Grid.Column="4" Grid.Row="0" />
+                                <local:TileControl ImageSource="Assets/test_pawn.png" ImageVisibility="Visible" Grid.Column="5" Grid.Row="0"/>
 
                             </Grid>
                         </Grid>

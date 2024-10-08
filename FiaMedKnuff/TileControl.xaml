@@ -9,7 +9,7 @@
     d:DesignHeight="64"
     d:DesignWidth="64">
 
-    <Border Style="{StaticResource TileBorder}">
-        <Image Source="{Binding ImageSource}" Visibility="{Binding ImageVisibility}"/>
+    <Border Style="{StaticResource TileBorder}" Background="{x:Bind BackgroundColor}">
+        <Image Source="{x:Bind ImageSource}" Visibility="{x:Bind ImageVisibility}"/>
     </Border>
 </UserControl>

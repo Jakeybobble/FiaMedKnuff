@@ -36,5 +36,13 @@ namespace FiaMedKnuff {
             get { return (Visibility)GetValue(ImageVisibilityProperty); }
             set { SetValue(ImageVisibilityProperty, value); }
         }
+
+        public static readonly DependencyProperty BackgroundColorProperty =
+            DependencyProperty.Register("BackgroundColor", typeof(SolidColorBrush), typeof(TileControl), new PropertyMetadata(new SolidColorBrush(Windows.UI.Colors.Transparent)));
+
+        public SolidColorBrush BackgroundColor {
+            get { return (SolidColorBrush)GetValue(BackgroundColorProperty); }
+            set { SetValue(BackgroundColorProperty, value); }
+        }
     }
 }
