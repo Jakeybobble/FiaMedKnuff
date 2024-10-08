@@ -149,6 +149,7 @@
                                 <local:TileControl Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
                                 
                                 <!-- Team circles -->
+                                <!-- Blue -->
                                 <Border Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource BlueTeam}" BorderThickness="5" CornerRadius="150">
                                     <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource BlueTeam}" CornerRadius="150">
                                         <Grid Padding="20">
@@ -169,6 +170,73 @@
                                         </Grid>
                                     </Border>
                                 </Border>
+                                
+                                <!-- Red -->
+                                <Border Grid.Column="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource RedTeam}" BorderThickness="5" CornerRadius="150">
+                                    <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource RedTeam}" CornerRadius="150">
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <local:TileControl Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="1"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Border>
+
+                                <!-- Yellow -->
+                                <Border Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource YellowTeam}" BorderThickness="5" CornerRadius="150">
+                                    <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource YellowTeam}" CornerRadius="150">
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <local:TileControl Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="1"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                                
+                                <!-- Green -->
+                                <Border Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource GreenTeam}" BorderThickness="5" CornerRadius="150">
+                                    <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource GreenTeam}" CornerRadius="150">
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <local:TileControl Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="1"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Border>
+
                             </Grid>
                         </Grid>
                     </Grid>
