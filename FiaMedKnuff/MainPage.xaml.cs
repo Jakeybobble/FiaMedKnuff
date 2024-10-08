@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -32,6 +33,11 @@ namespace FiaMedKnuff
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
             DieTextBlock.Text = $"{dieThrow}";
+
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
+
+            DieButton.Background = img;
         }
     }
 }
