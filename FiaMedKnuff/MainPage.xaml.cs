@@ -32,7 +32,7 @@ namespace FiaMedKnuff
         {
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
-            DieTextBlock.Text = $"{dieThrow}";
+            DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
 
             ImageBrush img = new ImageBrush();
             img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
