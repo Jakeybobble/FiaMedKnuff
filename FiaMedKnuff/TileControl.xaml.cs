@@ -22,7 +22,7 @@ namespace FiaMedKnuff {
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(string), typeof(TileControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ImageSource", typeof(string), typeof(TileControl), new PropertyMetadata("Assets/test_pawn.png"));
 
         public string ImageSource {
             get { return (string)GetValue(ImageSourceProperty); }

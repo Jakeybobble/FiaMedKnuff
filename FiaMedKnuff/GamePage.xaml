@@ -82,10 +82,71 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <!-- Each and every tile -->
-                                <local:TileControl ImageSource="Assets/test_pawn.png" BackgroundColor="Red" ImageVisibility="Visible" Grid.Column="4" Grid.Row="0" />
-                                <local:TileControl ImageSource="Assets/test_pawn.png" ImageVisibility="Visible" Grid.Column="5" Grid.Row="0"/>
-
+                                <!-- Surrounding tiles -->
+                                <local:TileControl Grid.Column="5" Grid.Row="5"/>
+                                
+                                <local:TileControl Grid.Column="4" Grid.Row="0"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="0"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="0" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="1"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="2"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="3"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="7" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="8" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="9" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="10" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="10" Grid.Row="5"/>
+                                <local:TileControl Grid.Column="10" Grid.Row="6" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="9" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="8" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="7" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="7"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="8"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="9"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="10"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="10"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="10" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="9"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="8"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="7"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="3" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="2" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="1" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="0" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="0" Grid.Row="5"/>
+                                <local:TileControl Grid.Column="0" Grid.Row="4" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="1" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="2" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="3" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="3"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="2"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="1"/>
+                                
+                                <!-- Color tiles -->
+                                <!-- Red team -->
+                                <local:TileControl Grid.Column="5" Grid.Row="1" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="2" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="3" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="4" BackgroundColor="{StaticResource RedTeam}"/>
+                                <!-- Yellow team -->
+                                <local:TileControl Grid.Column="6" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="7" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="8" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="9" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <!-- Green team -->
+                                <local:TileControl Grid.Column="5" Grid.Row="9" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="8" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="7" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="6" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <!-- Blue team -->
+                                <local:TileControl Grid.Column="1" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="2" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="3" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
                             </Grid>
                         </Grid>
                     </Grid>
