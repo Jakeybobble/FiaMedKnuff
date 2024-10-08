@@ -16,5 +16,5 @@
     <SolidColorBrush Color="#9D3700" x:Key="OrangeButtonClicked"/>
 
     <SolidColorBrush Color="#FFFFFF" x:Key="WhiteButton"/>
-    <SolidColorBrush Color="#A7D2E8" x:Key="WhiteButtonPressed"/>
+    <SolidColorBrush Color="#A7D2E8" x:Key="WhiteButtonHovered"/>
 </ResourceDictionary>
