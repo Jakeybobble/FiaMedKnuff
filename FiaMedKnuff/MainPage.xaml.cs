@@ -26,5 +26,12 @@ namespace FiaMedKnuff
         {
             this.InitializeComponent();
         }
+
+        private void DieButton_Click(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            int dieThrow = rnd.Next(1, 7);
+            DieTextBlock.Text = $"{dieThrow}";
+        }
     }
 }
