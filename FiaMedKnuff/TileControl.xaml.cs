@@ -38,7 +38,7 @@ namespace FiaMedKnuff {
         }
 
         public static readonly DependencyProperty BackgroundColorProperty =
-            DependencyProperty.Register("BackgroundColor", typeof(SolidColorBrush), typeof(TileControl), new PropertyMetadata(new SolidColorBrush(Windows.UI.Colors.Transparent)));
+            DependencyProperty.Register("BackgroundColor", typeof(SolidColorBrush), typeof(TileControl), new PropertyMetadata(new SolidColorBrush(Windows.UI.Colors.White)));
 
         public SolidColorBrush BackgroundColor {
             get { return (SolidColorBrush)GetValue(BackgroundColorProperty); }
