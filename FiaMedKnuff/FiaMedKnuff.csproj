@@ -132,6 +132,7 @@
   <ItemGroup>
     <Content Include="Assets\gear-icon-png-2221.png" />
     <Content Include="Assets\Pawn.png" />
+    <Content Include="Assets\RedPawn.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
