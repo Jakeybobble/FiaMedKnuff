@@ -5,16 +5,19 @@
     <SolidColorBrush Color="#FFFFFF" x:Key="StandardWhite"/>
     <SolidColorBrush Color="#8D8D8D" x:Key="DescriptionGray"/>
     <SolidColorBrush Color="#000000" x:Key="StandardText"/>
+    <SolidColorBrush Color="#000000" x:Key="Border"/>
 
-    <SolidColorBrush Color="#DC2020" x:Key="ReadTeam"/>
+    <SolidColorBrush Color="#DC2020" x:Key="RedTeam"/>
     <SolidColorBrush Color="#2EBA0C" x:Key="GreenTeam"/>
     <SolidColorBrush Color="#1C49DF" x:Key="BlueTeam"/>
     <SolidColorBrush Color="#FFD900" x:Key="YellowTeam"/>
+
+    <SolidColorBrush Color="#FFFFFF" x:Key="StandardTile"/>
 
     <SolidColorBrush Color="#FFA11D" x:Key="OrangeButton"/>
     <SolidColorBrush Color="#FFD478" x:Key="OrangeButtonHovered"/>
     <SolidColorBrush Color="#9D3700" x:Key="OrangeButtonClicked"/>
 
     <SolidColorBrush Color="#FFFFFF" x:Key="WhiteButton"/>
-    <SolidColorBrush Color="#A7D2E8" x:Key="WhiteButtonPressed"/>
+    <SolidColorBrush Color="#A7D2E8" x:Key="WhiteButtonClicked"/>
 </ResourceDictionary>
