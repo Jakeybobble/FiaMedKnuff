@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FiaMedKnuff.FiaGame {
     class Game {
 
-        public Dictionary<TileType, Dictionary<int, TileControl>> Tiles = new Dictionary<TileType, Dictionary<int, TileControl>>();
+        public Dictionary<SpaceType, Dictionary<int, TileControl>> Spaces = new Dictionary<SpaceType, Dictionary<int, TileControl>>();
 
         public Game() {
 
@@ -15,7 +15,7 @@ namespace FiaMedKnuff.FiaGame {
 
     }
 
-    public enum TileType {
+    public enum SpaceType {
         Home, TowardsCenter, Surrounding, Center
     }
 }
