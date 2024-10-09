@@ -8,6 +8,55 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Style x:Key="ButtonStyleDie" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
+            <Setter Property="BackgroundSizing" Value="OuterBorderEdge"/>
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="{StaticResource ButtonPadding}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+            <Setter Property="FocusVisualMargin" Value="-3"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BackgroundSizing="{TemplateBinding BackgroundSizing}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" ContentTemplate="{TemplateBinding ContentTemplate}" CornerRadius="{TemplateBinding CornerRadius}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
+    
     <Grid Background="{StaticResource StandardOrange}" Padding="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -39,11 +88,24 @@
                 <!-- TODO: Put pawns here -->
             </StackPanel>
             <!-- Infolåda -->
-            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                <Grid CornerRadius="5" Height="100">
-                    
+            <Grid Grid.Column="1" Grid.Row="1" Height="100">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid BorderThickness="5" BorderBrush="Black" Grid.Column="0" CornerRadius="5" Background="White" Margin="10">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">                       
+                        <TextBlock x:Name="DieTextBlock" TextWrapping="Wrap" Text="Press the die button" FontSize="30" FontFamily="Inconsolata"/>
+                    </Grid>
                 </Grid>
-            </StackPanel>
+                <Grid Grid.Column="1" Width="60" Height="60" Background="Transparent" Margin="10">
+                    <Button Style="{StaticResource ButtonStyleDie}" x:Name="DieButton" Content="" Width="50" Height="50" Margin="0,0,0,0" Click="DieButton_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Assets/Die/Die1.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Grid>
             <!-- Game board -->
             <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border Style="{StaticResource CommonBorder}">
@@ -84,7 +146,7 @@
                                 </Grid.RowDefinitions>
                                 <!-- Surrounding tiles -->
                                 <local:TileControl Grid.Column="5" Grid.Row="5"/>
-                                
+
                                 <local:TileControl Grid.Column="4" Grid.Row="0"/>
                                 <local:TileControl Grid.Column="5" Grid.Row="0"/>
                                 <local:TileControl Grid.Column="6" Grid.Row="0" BackgroundColor="{StaticResource RedTeam}"/>
@@ -125,7 +187,7 @@
                                 <local:TileControl Grid.Column="4" Grid.Row="3"/>
                                 <local:TileControl Grid.Column="4" Grid.Row="2"/>
                                 <local:TileControl Grid.Column="4" Grid.Row="1"/>
-                                
+
                                 <!-- Color tiles -->
                                 <!-- Red team -->
                                 <local:TileControl Grid.Column="5" Grid.Row="1" BackgroundColor="{StaticResource RedTeam}"/>
@@ -147,7 +209,7 @@
                                 <local:TileControl Grid.Column="2" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
                                 <local:TileControl Grid.Column="3" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
                                 <local:TileControl Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
-                                
+
                                 <!-- Team circles -->
                                 <!-- Blue -->
                                 <Border Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource BlueTeam}" BorderThickness="5" CornerRadius="150">
@@ -161,16 +223,16 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            
+
                                             <local:TileControl Grid.Column="0" Grid.Row="0"/>
                                             <local:TileControl Grid.Column="1" Grid.Row="0"/>
                                             <local:TileControl Grid.Column="0" Grid.Row="1"/>
                                             <local:TileControl Grid.Column="1" Grid.Row="1"/>
-                                            
+
                                         </Grid>
                                     </Border>
                                 </Border>
-                                
+
                                 <!-- Red -->
                                 <Border Grid.Column="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource RedTeam}" BorderThickness="5" CornerRadius="150">
                                     <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource RedTeam}" CornerRadius="150">
@@ -214,7 +276,7 @@
                                         </Grid>
                                     </Border>
                                 </Border>
-                                
+
                                 <!-- Green -->
                                 <Border Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource GreenTeam}" BorderThickness="5" CornerRadius="150">
                                     <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource GreenTeam}" CornerRadius="150">
@@ -242,8 +304,6 @@
                     </Grid>
                 </Border>
             </Grid>
-            
         </Grid>
-
     </Grid>
 </Page>
