@@ -52,5 +52,11 @@ namespace FiaMedKnuff
         {
             e.Handled = true;
         }
+
+        // Clicking "Starta" navigates the user to the gameboard.
+        private void StartaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(GamePage));
+        }
     }
 }

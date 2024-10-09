@@ -39,7 +39,7 @@
                                     <Image Width="150" Height="150" Source="/Assets/RedPawn.png"/>
                                 </Grid>
 
-                                <Button Width="270" Height="75" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Margin="0,500,0,0" />
+                                <Button Width="270" Height="75" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Margin="0,500,0,0" Click="StartaBtn_Click" />
                         </Grid>
                     </StackPanel>                
                 </Grid>
