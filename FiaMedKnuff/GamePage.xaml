@@ -1,0 +1,249 @@
+﻿<Page
+    x:Class="FiaMedKnuff.GamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FiaMedKnuff"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{StaticResource StandardOrange}" Padding="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button>Nytt spel</Button>
+            <Button>Regler</Button>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Button>Inställningar</Button>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Gråa bitar -->
+            <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">
+                <!-- TODO: Put pawns here -->
+            </StackPanel>
+            <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left">
+                <!-- TODO: Put pawns here -->
+            </StackPanel>
+            <!-- Infolåda -->
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <Grid CornerRadius="5" Height="100">
+                    
+                </Grid>
+            </StackPanel>
+            <!-- Game board -->
+            <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Style="{StaticResource CommonBorder}">
+                    <Grid>
+                        <Viewbox Stretch="Uniform">
+                            <Grid Background="White" MinWidth="100" MinHeight="100" HorizontalAlignment="Center">
+                            </Grid>
+                        </Viewbox>
+                        <!-- Board content -->
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="30">
+                            <!-- Spaces -->
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <!-- Surrounding tiles -->
+                                <local:TileControl Grid.Column="5" Grid.Row="5"/>
+                                
+                                <local:TileControl Grid.Column="4" Grid.Row="0"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="0"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="0" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="1"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="2"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="3"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="7" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="8" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="9" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="10" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="10" Grid.Row="5"/>
+                                <local:TileControl Grid.Column="10" Grid.Row="6" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="9" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="8" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="7" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="7"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="8"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="9"/>
+                                <local:TileControl Grid.Column="6" Grid.Row="10"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="10"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="10" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="9"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="8"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="7"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="3" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="2" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="1" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="0" Grid.Row="6"/>
+                                <local:TileControl Grid.Column="0" Grid.Row="5"/>
+                                <local:TileControl Grid.Column="0" Grid.Row="4" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="1" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="2" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="3" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="4"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="3"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="2"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="1"/>
+                                
+                                <!-- Color tiles -->
+                                <!-- Red team -->
+                                <local:TileControl Grid.Column="5" Grid.Row="1" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="2" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="3" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="4" BackgroundColor="{StaticResource RedTeam}"/>
+                                <!-- Yellow team -->
+                                <local:TileControl Grid.Column="6" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="7" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="8" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Grid.Column="9" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <!-- Green team -->
+                                <local:TileControl Grid.Column="5" Grid.Row="9" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="8" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="7" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Grid.Column="5" Grid.Row="6" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <!-- Blue team -->
+                                <local:TileControl Grid.Column="1" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="2" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="3" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                
+                                <!-- Team circles -->
+                                <!-- Blue -->
+                                <Border Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource BlueTeam}" BorderThickness="5" CornerRadius="150">
+                                    <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource BlueTeam}" CornerRadius="150">
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <local:TileControl Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="1"/>
+                                            
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                                
+                                <!-- Red -->
+                                <Border Grid.Column="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource RedTeam}" BorderThickness="5" CornerRadius="150">
+                                    <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource RedTeam}" CornerRadius="150">
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <local:TileControl Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="1"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Border>
+
+                                <!-- Yellow -->
+                                <Border Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource YellowTeam}" BorderThickness="5" CornerRadius="150">
+                                    <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource YellowTeam}" CornerRadius="150">
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <local:TileControl Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="1"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                                
+                                <!-- Green -->
+                                <Border Grid.Row="8" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderBrush="{StaticResource GreenTeam}" BorderThickness="5" CornerRadius="150">
+                                    <Border BorderThickness="5" BorderBrush="{StaticResource Border}" Margin="5" Background="{StaticResource GreenTeam}" CornerRadius="150">
+                                        <Grid Padding="20">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <local:TileControl Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="0"/>
+                                            <local:TileControl Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl Grid.Column="1" Grid.Row="1"/>
+
+                                        </Grid>
+                                    </Border>
+                                </Border>
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+        </Grid>
+
+    </Grid>
+</Page>

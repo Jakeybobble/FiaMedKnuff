@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -68,6 +69,11 @@ namespace FiaMedKnuff
                     // parameter
                     rootFrame.Navigate(typeof(ResultatPage), e.Arguments);
                 }
+
+                // Force the window to be the right size at launch
+                ApplicationView.PreferredLaunchViewSize = new Size(1440, 1024);
+                ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
