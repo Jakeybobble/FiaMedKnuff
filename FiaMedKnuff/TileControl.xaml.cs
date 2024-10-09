@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -17,8 +18,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace FiaMedKnuff {
     public sealed partial class TileControl : UserControl {
+
         public TileControl() {
             this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// Runs once the component is loaded, after the properties are set in XAML
+        /// </summary>
+        private void UserControl_Loaded(object sender, RoutedEventArgs e) {
+            // TODO: Register from here.
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
@@ -44,5 +53,6 @@ namespace FiaMedKnuff {
             get { return (SolidColorBrush)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
+
     }
 }

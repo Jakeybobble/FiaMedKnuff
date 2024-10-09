@@ -7,9 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="64"
-    d:DesignWidth="64">
+    d:DesignWidth="64"
+    Loaded="UserControl_Loaded">
 
-    <Border Style="{StaticResource TileBorder}" Background="{x:Bind BackgroundColor}" Margin="2">
-        <Image Source="{x:Bind ImageSource}" Visibility="{x:Bind ImageVisibility}"/>
+    <Border Style="{StaticResource TileBorder}" Background="{x:Bind BackgroundColor, Mode=OneWay}" Margin="2">
+        <Image Source="{x:Bind ImageSource, Mode=OneWay}" Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
     </Border>
 </UserControl>
