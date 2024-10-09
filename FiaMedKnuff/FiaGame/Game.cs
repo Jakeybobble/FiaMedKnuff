@@ -5,9 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FiaMedKnuff.FiaGame {
-    internal class Game {
+    class Game {
+
+        public Dictionary<TileType, List<TileControl>> Tiles = new Dictionary<TileType, List<TileControl>>();
+
         public Game() {
 
         }
+
+    }
+
+    public enum TileType {
+        Home, TowardsCenter, Surrounding, Center
     }
 }
