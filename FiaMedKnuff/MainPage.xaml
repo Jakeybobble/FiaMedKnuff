@@ -28,9 +28,9 @@
             </Grid>
 
             <Popup Name="NewGameOptionsPopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsLightDismissEnabled="True">
-                <Grid Background="#80000000" Tapped="ClosePopup_Tapped">
+                <Grid Background="#80000000" Tapped="PopupOutside_Tapped">
                     <StackPanel>
-                        <Grid Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="630" Height="800" Margin="645,105,645,105">
+                        <Grid Tapped="PopupInside_Tapped" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="630" Height="800" Margin="645,105,645,105">
                             <Button Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click"/> 
                             <TextBlock Width="200" Height="70" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Margin="0,55,0,0"/>
                                 <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Margin="0,165,0,0"/>
