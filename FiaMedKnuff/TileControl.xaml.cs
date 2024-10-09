@@ -29,8 +29,24 @@ namespace FiaMedKnuff {
         /// Runs once the component is loaded, after the properties are set in XAML
         /// </summary>
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
+
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled) {
+                return;
+            }
+
             // TODO: Register from here.
-            Trace.WriteLine(Space);
+            //Trace.WriteLine(Space);
+            var tilesMap = GameManager.CurrentGame.Tiles;
+            if(Space != -1) {
+                if (!tilesMap.ContainsKey(SpaceType)) {
+                    tilesMap[SpaceType] = new Dictionary<int, TileControl>();
+                }
+                if (!tilesMap[SpaceType].ContainsKey(Space)) {
+                    tilesMap[SpaceType].Add(Space, this);
+                } else {
+                    throw new Exception("A TileControl with duplicate value was found.");
+                }
+            }
         }
 
         public static readonly DependencyProperty ImageSourceProperty =

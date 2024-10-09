@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FiaMedKnuff.FiaGame {
     class Game {
 
-        public Dictionary<TileType, List<TileControl>> Tiles = new Dictionary<TileType, List<TileControl>>();
+        public Dictionary<TileType, Dictionary<int, TileControl>> Tiles = new Dictionary<TileType, Dictionary<int, TileControl>>();
 
         public Game() {
 
