@@ -20,10 +20,10 @@
                 <Button Width="270" Height="75" Content="Nytt Spel" Background="{StaticResource OrangeButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" Margin="95,0,0,0" HorizontalAlignment="Left" Click="NyttSpelBtn_Click" />
 
                 <TextBlock Width="800" Height="70" HorizontalAlignment="Left" Text="Av Erika, Abbas, Henrik och Jacob" Foreground="{StaticResource StandardText}" FontSize="50" FontFamily="Inconsolata" TextWrapping="Wrap" Margin="95,325,0,127"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="95,390,0,35"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="185,390,0,35"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="275,390,0,35"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawn.png"  Margin="365,390,0,35"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="95,390,0,35"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="185,390,0,35"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="275,390,0,35"/>
+                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="365,390,0,35"/>
                                 
             </Grid>
 
@@ -36,7 +36,7 @@
                                 <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Margin="0,165,0,0"/>
 
                                 <Grid BorderBrush="Black" BorderThickness="5" CornerRadius="15" Width="200" Height="200" Background="{StaticResource StandardWhite}">
-                                    <Image Width="150" Height="150" Source="/Assets/RedPawn.png"/>
+                                    <Image Width="150" Height="150" Source="/Assets/Pawns/RedPawn.png"/>
                                 </Grid>
 
                                 <Button Width="270" Height="75" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Margin="0,500,0,0" Click="StartaBtn_Click" />
