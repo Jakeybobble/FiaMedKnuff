@@ -34,18 +34,22 @@ namespace FiaMedKnuff {
                 return;
             }
 
-            var spacesMap = GameManager.CurrentGame.Spaces;
-            if(Space != -1) {
-                if (!spacesMap.ContainsKey(SpaceType)) {
-                    spacesMap[SpaceType] = new Dictionary<int, TileControl>();
-                }
-                if (!spacesMap[SpaceType].ContainsKey(Space)) {
-                    spacesMap[SpaceType].Add(Space, this);
-                    Trace.WriteLine($"Added Tile {SpaceType} {Space}...");
-                } else {
-                    throw new Exception("A TileControl with duplicate value was found.");
-                }
-            }
+            Register();
+
+        }
+
+        /// <summary>
+        /// Register the tile into the current game // TODO: Better summary
+        /// </summary>
+        private void Register() {
+            GameManager.CurrentGame.RegisterTiles();
+
+            var tile = GameManager.CurrentGame.Tiles[SpaceType][Space];
+            tile.TileControl = this;
+
+            tile.Update(tile.State);
+            //Trace.WriteLine(tile.State);
+
         }
 
         public static readonly DependencyProperty ImageSourceProperty =

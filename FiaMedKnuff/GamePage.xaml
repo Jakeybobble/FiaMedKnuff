@@ -193,25 +193,25 @@
                                 
                                 <!-- Color tiles -->
                                 <!-- Red team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="1" BackgroundColor="{StaticResource RedTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="2" BackgroundColor="{StaticResource RedTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="3" BackgroundColor="{StaticResource RedTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="4" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="0" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="1" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="1" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="2" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="2" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="3" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="3" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="4" BackgroundColor="{StaticResource RedTeam}"/>
                                 <!-- Yellow team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="6" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="7" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="8" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="9" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="4" SpaceType="TowardsCenter" Grid.Column="9" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="5" SpaceType="TowardsCenter" Grid.Column="8" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="6" SpaceType="TowardsCenter" Grid.Column="7" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="7" SpaceType="TowardsCenter" Grid.Column="6" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
                                 <!-- Green team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="9" BackgroundColor="{StaticResource GreenTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="8" BackgroundColor="{StaticResource GreenTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="7" BackgroundColor="{StaticResource GreenTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="6" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="8" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="9" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="9" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="8" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="10" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="7" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="11" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="6" BackgroundColor="{StaticResource GreenTeam}"/>
                                 <!-- Blue team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="1" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="2" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="3" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl ImageSource="/Assets/Pawn.png"  Space="12" SpaceType="TowardsCenter" Grid.Column="1" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Space="13" SpaceType="TowardsCenter" Grid.Column="2" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Space="14" SpaceType="TowardsCenter" Grid.Column="3" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Space="15" SpaceType="TowardsCenter" Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
                                 
                                 <!-- Team circles -->
                                 <!-- Red -->
