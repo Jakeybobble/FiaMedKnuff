@@ -20,4 +20,5 @@
 
     <SolidColorBrush Color="#FFFFFF" x:Key="WhiteButton"/>
     <SolidColorBrush Color="#A7D2E8" x:Key="WhiteButtonClicked"/>
+
 </ResourceDictionary>
