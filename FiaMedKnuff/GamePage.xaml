@@ -227,10 +227,11 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
 
-                                            <local:TileControl Space="0" SpaceType="Home" Grid.Column="0" Grid.Row="0"/>
-                                            <local:TileControl Space="1" SpaceType="Home" Grid.Column="1" Grid.Row="0"/>
-                                            <local:TileControl Space="2" SpaceType="Home" Grid.Column="0" Grid.Row="1"/>
-                                            <local:TileControl Space="3" SpaceType="Home" Grid.Column="1" Grid.Row="1"/>
+                                            <local:TileControl ImageVisibility="Visible" Space="0" SpaceType="Home" Grid.Column="0" Grid.Row="0"/>
+                                            <local:TileControl ImageVisibility="Visible" Space="1" SpaceType="Home" Grid.Column="1" Grid.Row="0"/>
+                                            <!-- Raden ovanför ska ha detta oxo: Loaded="TileControl_Loaded"-->
+                                            <local:TileControl ImageVisibility="Visible" Space="2" SpaceType="Home" Grid.Column="0" Grid.Row="1"/>
+                                            <local:TileControl ImageVisibility="Visible" Space="3" SpaceType="Home" Grid.Column="1" Grid.Row="1"/>
 
                                         </Grid>
                                     </Border>

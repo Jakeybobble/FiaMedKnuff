@@ -159,15 +159,18 @@
     <Content Include="Assets\gear-icon-png-2221.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Pawn.png">
+    <Content Include="Assets\Pawns\BluePawn.png" />
+    <Content Include="Assets\Pawns\GreenPawn.png" />
+    <Content Include="Assets\Pawns\Pawn.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\RedPawn.png">
+    <Content Include="Assets\Pawns\RedPawn.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\test_pawn.png">
+    <Content Include="Assets\Pawns\test_pawn.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Pawns\YellowPawn.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -218,6 +221,7 @@
       <Version>6.2.14</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
