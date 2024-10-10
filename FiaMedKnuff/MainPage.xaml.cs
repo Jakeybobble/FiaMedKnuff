@@ -41,9 +41,22 @@ namespace FiaMedKnuff
             NewGameOptionsPopup.IsOpen = false;
         }
 
-        private void ClosePopup_Tapped(object sender, TappedRoutedEventArgs e)
+        // When user clicks outside of the Popup, it is closed.
+        private void PopupOutside_Tapped(object sender, TappedRoutedEventArgs e)
         {
             NewGameOptionsPopup.IsOpen = false;
+        }
+
+        // When user clicks inside of the Popup, it stays open. 
+        private void PopupInside_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        // Clicking "Starta" navigates the user to the gameboard.
+        private void StartaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(GamePage));
         }
     }
 }

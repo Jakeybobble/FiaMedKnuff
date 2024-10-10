@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,6 +23,18 @@ namespace FiaMedKnuff {
     public sealed partial class GamePage : Page {
         public GamePage() {
             this.InitializeComponent();
+        }
+
+        private void DieButton_Click(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            int dieThrow = rnd.Next(1, 7);
+            DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
+
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
+
+            DieButton.Background = img;
         }
     }
 }
