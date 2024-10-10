@@ -59,9 +59,9 @@
     
     <Grid Background="{StaticResource StandardOrange}" Padding="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="270"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="270"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <Button Width="270" Height="75" Content="Nytt Spel" Background="{StaticResource OrangeButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Left" Click="NyttSpelBtn_Click" />
