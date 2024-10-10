@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FiaMedKnuff.FiaGame;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace FiaMedKnuff
         /// </summary>
         public App()
         {
+            GameManager.Init();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
