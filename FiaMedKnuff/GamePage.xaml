@@ -65,10 +65,10 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <Button Width="270" Height="75" Content="Nytt Spel" Background="{StaticResource OrangeButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Left" Click="NyttSpelBtn_Click" />
-            <Button>Regler</Button>
+            <!-- TBD  <Button>Regler </Button>-->
         </StackPanel>
         <StackPanel Grid.Column="2">
-            <Button Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Click="SettingsBtn_Click">
+            <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Click="SettingsBtn_Click">
                 <Image Width="65" Height="65" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/gear-icon-png-2221.png"/>
             </Button>
         </StackPanel>

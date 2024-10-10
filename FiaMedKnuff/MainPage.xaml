@@ -144,7 +144,7 @@
 
     <StackPanel>
         <Grid>
-            <Button Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" Margin="0,20,20,0" VerticalAlignment="Top" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhite}">
+            <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" Margin="0,20,20,0" VerticalAlignment="Top" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhite}">
                 <Image Width="65" Height="65" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/gear-icon-png-2221.png"/>
             </Button>
 
