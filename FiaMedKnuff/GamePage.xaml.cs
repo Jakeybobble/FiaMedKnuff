@@ -36,5 +36,40 @@ namespace FiaMedKnuff {
 
             DieButton.Background = img;
         }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // TBD Link to Settings Page
+        }
+
+        private void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NewGameOptionsPopup.IsOpen = true;
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NewGameOptionsPopup.IsOpen = false;
+        }
+
+        // When user clicks outside of the Popup, it is closed.
+        private void PopupOutside_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            NewGameOptionsPopup.IsOpen = false;
+        }
+
+        // When user clicks inside of the Popup, it stays open. 
+        private void PopupInside_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        // Clicking "Starta" navigates the user to the gameboard.
+        private void StartaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //TBD Activating this makes the tiles be loaded again but as duplicates.
+
+            //Frame.Navigate(typeof(GamePage));
+        }
     }
 }
