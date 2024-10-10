@@ -34,7 +34,6 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="state"></param>
         public void Update(TileState state) {
-            // TODO: Set image sources
             State = state;
             switch (State) {
                 case TileState.None:
@@ -42,18 +41,22 @@ namespace FiaMedKnuff.FiaGame {
                     break;
                 case TileState.Red:
                     TileControl.ImageVisibility = Visible;
+                    TileControl.ImageSource = "/Assets/Pawns/RedPawn.png";
 
                     break;
                 case TileState.Green:
                     TileControl.ImageVisibility = Visible;
+                    TileControl.ImageSource = "/Assets/Pawns/GreenPawn.png";
 
                     break;
                 case TileState.Blue:
                     TileControl.ImageVisibility = Visible;
+                    TileControl.ImageSource = "/Assets/Pawns/BluePawn.png";
 
                     break;
                 case TileState.Yellow:
                     TileControl.ImageVisibility = Visible;
+                    TileControl.ImageSource = "/Assets/Pawns/YellowPawn.png";
 
                     break;
             }
