@@ -10,11 +10,25 @@ namespace FiaMedKnuff.FiaGame {
         //public Dictionary<SpaceType, Dictionary<int, TileControl>> Spaces = new Dictionary<SpaceType, Dictionary<int, TileControl>>();
         public Dictionary<SpaceType, Dictionary<int, Tile>> Tiles = new Dictionary<SpaceType, Dictionary<int, Tile>>();
 
-        public Game() {
+        /// <summary>
+        /// The current turn of the game. Increments by the end of the turn.
+        /// </summary>
+        public int Turn = 0;
 
+
+
+        public enum GameState {
+            PreRoll,
+        }
+
+        public Game() {
+            // TODO: When it is time, register tiles and players here instead.
         }
 
         private bool HasRegistered = false;
+        /// <summary>
+        /// Fills the Tiles dictionary with tiles and puts pawns into each home
+        /// </summary>
         public void RegisterTiles() {
             if (HasRegistered) return;
             HasRegistered = true;
@@ -27,9 +41,13 @@ namespace FiaMedKnuff.FiaGame {
                     var team = teams[i];
                     var space = i * 4 + j;
 
+                    // Create the tile...
                     var tile = new Tile(space);
                     tile.State = team;
                     homeTiles.Add(space, tile);
+
+                    // ...Create the pawn
+                    var pawn = new Pawn(team, tile);
                 }
                 
             }

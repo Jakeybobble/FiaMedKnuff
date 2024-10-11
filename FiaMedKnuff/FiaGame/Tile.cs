@@ -19,6 +19,8 @@ namespace FiaMedKnuff.FiaGame {
         }
         public TileState State = TileState.None;
 
+        public SpaceType SpaceType => TileControl.SpaceType;
+
         public int Space = -1;
 
         public Tile() {
