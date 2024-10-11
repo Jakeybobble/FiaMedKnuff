@@ -63,11 +63,11 @@ namespace FiaMedKnuff {
         // When user clicks outside of the Popup, it is closed.
         private void PopupOutside_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (sender == NewGameOptionsPopupGrid1)
+            if (sender == NewGameOptionsPopupGrid)
             {
                 NewGameOptionsPopup.IsOpen = false;
             }
-            else if (sender == RulesPopupGrid1)
+            else if (sender == RulesPopupGrid)
             {
                 RulesPopup.IsOpen = false;
             }            
@@ -75,11 +75,7 @@ namespace FiaMedKnuff {
 
         // When user clicks inside of the Popup, it stays open. Unless the Closebtn was pressed.  
         private void PopupInside_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            if ( sender == RulesCloseBtn)
-            {
-                RulesPopup.IsOpen = false;
-            }
+        {           
             e.Handled = true;     
         }
 
