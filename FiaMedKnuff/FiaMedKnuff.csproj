@@ -122,6 +122,7 @@
     <Compile Include="FiaGame\GameEvents.cs" />
     <Compile Include="FiaGame\Game.cs" />
     <Compile Include="FiaGame\Pawn.cs" />
+    <Compile Include="FiaGame\Team.cs" />
     <Compile Include="FiaGame\Tile.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>

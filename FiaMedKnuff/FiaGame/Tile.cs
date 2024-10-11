@@ -67,6 +67,8 @@ namespace FiaMedKnuff.FiaGame {
 
                     break;
             }
+            // Not sure if this should be here, but it is a good way to ensure that there are no left-over selectables...
+            // TileControl.Selectable = false;
 
         }
 

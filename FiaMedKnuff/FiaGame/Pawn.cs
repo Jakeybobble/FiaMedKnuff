@@ -20,11 +20,29 @@ namespace FiaMedKnuff.FiaGame {
             currentTile.Stander = this;
         }
 
-        public void Move(int spaces) {
+        /// <summary>
+        /// Move self from one tile to the other and refresh both tiles.
+        /// </summary>
+        /// <param name="to">Tile to move to</param>
+        public void Move(Tile to) {
             Tile from = CurrentTile;
-            // Temporary code
-            Tile to = GameManager.CurrentGame.Tiles[SpaceType.Surrounding][from.Space + spaces];
-            
+            from.Stander = null; to.Stander = this;
+            CurrentTile = to;
+            from.Refresh(); to.Refresh();
+        }
+
+        /// <summary>
+        /// Move self forwards an amount of spaces
+        /// </summary>
+        /// <param name="spaces">Spaces to move forwards</param>
+        public void Move(int spaces) {
+            // Mostly temporary code to prove it works
+            if (CurrentTile.SpaceType == SpaceType.Home) {
+                Move(GameManager.CurrentGame.Tiles[SpaceType.Surrounding][2]);
+            } else {
+                Tile to = GameManager.CurrentGame.Tiles[SpaceType.Surrounding][(CurrentTile.Space + spaces) % Game.Spaces];
+                Move(to);
+            }
         }
 
     }

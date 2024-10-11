@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace FiaMedKnuff.FiaGame {
     class Game {
 
-        //public Dictionary<SpaceType, Dictionary<int, TileControl>> Spaces = new Dictionary<SpaceType, Dictionary<int, TileControl>>();
+        public static int Spaces = 40;
+
         public Dictionary<SpaceType, Dictionary<int, Tile>> Tiles = new Dictionary<SpaceType, Dictionary<int, Tile>>();
 
         /// <summary>
@@ -15,10 +16,21 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         public int Turn = 0;
 
-
+        public Team[] Teams = new Team[] {
+            new Team(Tile.TeamColor.Red, Team.TeamType.Player)
+        };
+        public int CurrentTeamIndex = 0;
+        public Team CurrentTeam => Teams[CurrentTeamIndex];
 
         public enum GameState {
+            /// <summary>
+            /// Before the player has clicked the die.
+            /// </summary>
             PreRoll,
+            /// <summary>
+            /// The state that generates possible choices after the player rolling the die.
+            /// </summary>
+            PostRoll
         }
 
         public Game() {
