@@ -31,6 +31,8 @@ namespace FiaMedKnuff {
         /// </summary>
         public bool Selectable = true;
 
+        private Tile tile;
+
         /// <summary>
         /// Runs once the component is loaded, after the properties are set in XAML
         /// </summary>
@@ -52,6 +54,7 @@ namespace FiaMedKnuff {
 
             var tile = GameManager.CurrentGame.Tiles[SpaceType][Space];
             tile.TileControl = this;
+            this.tile = tile;
 
             //tile.Update(tile.State);
             tile.Refresh();
@@ -102,7 +105,7 @@ namespace FiaMedKnuff {
 
         private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
             if (!Selectable) return;
-            Trace.WriteLine("Boop!");
+            GameEvents.OnTileClicked(tile);
         }
 
         private void Border_PointerEntered(object sender, PointerRoutedEventArgs e) {
