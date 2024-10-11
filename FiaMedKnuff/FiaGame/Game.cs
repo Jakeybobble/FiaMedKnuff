@@ -17,7 +17,7 @@ namespace FiaMedKnuff.FiaGame {
         public int Turn = 0;
 
         public Team[] Teams = new Team[] {
-            new Team(Tile.TeamColor.Red, Team.TeamType.Player)
+            new Team(TeamColor.Red, Team.TeamType.Player)
         };
         public int CurrentTeamIndex = 0;
         public Team CurrentTeam => Teams[CurrentTeamIndex];
@@ -47,7 +47,7 @@ namespace FiaMedKnuff.FiaGame {
 
             // Create each tile class so that a TileControl can register itself to it after loading
             var homeTiles = new Dictionary<int, Tile>();
-            Tile.TeamColor[] teams = { Tile.TeamColor.Red, Tile.TeamColor.Yellow, Tile.TeamColor.Green, Tile.TeamColor.Blue };
+            TeamColor[] teams = { TeamColor.Red, TeamColor.Yellow, TeamColor.Green, TeamColor.Blue };
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
                     var team = teams[i];
@@ -85,4 +85,5 @@ namespace FiaMedKnuff.FiaGame {
     public enum SpaceType {
         Home, TowardsCenter, Surrounding, Center
     }
+
 }

@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static FiaMedKnuff.FiaGame.Tile;
 
 namespace FiaMedKnuff.FiaGame {
+
+    public enum TeamColor {
+        None,
+        Red,
+        Green,
+        Blue,
+        Yellow,
+    }
+
     internal class Pawn {
 
         public TeamColor Team;

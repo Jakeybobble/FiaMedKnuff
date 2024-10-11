@@ -10,13 +10,6 @@ namespace FiaMedKnuff.FiaGame {
     internal class Tile {
 
         public TileControl TileControl;
-        public enum TeamColor { 
-            None,
-            Red,
-            Green,
-            Blue,
-            Yellow,
-        }
 
         /// <summary>
         /// The Pawn that is standing on this tile.
