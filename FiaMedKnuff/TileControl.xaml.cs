@@ -47,7 +47,8 @@ namespace FiaMedKnuff {
             var tile = GameManager.CurrentGame.Tiles[SpaceType][Space];
             tile.TileControl = this;
 
-            tile.Update(tile.State);
+            //tile.Update(tile.State);
+            tile.Refresh();
             //Trace.WriteLine(tile.State);
 
         }

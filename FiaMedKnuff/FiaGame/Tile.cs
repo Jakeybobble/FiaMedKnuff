@@ -10,14 +10,19 @@ namespace FiaMedKnuff.FiaGame {
     internal class Tile {
 
         public TileControl TileControl;
-        public enum TileState { 
+        public enum TeamColor { 
             None,
             Red,
             Green,
             Blue,
             Yellow,
         }
-        public TileState State = TileState.None;
+
+        /// <summary>
+        /// The Pawn that is standing on this tile.
+        /// Remember that this is updated manually.
+        /// </summary>
+        public Pawn Stander;
 
         public SpaceType SpaceType => TileControl.SpaceType;
 
@@ -32,31 +37,31 @@ namespace FiaMedKnuff.FiaGame {
         }
 
         /// <summary>
-        /// Updates the image of the tile to set state
+        /// Refreshes the tile's pawn texture depending on who is standing on it
         /// </summary>
         /// <param name="state"></param>
-        public void Update(TileState state) {
-            State = state;
-            switch (State) {
-                case TileState.None:
+        public void Refresh() {
+            TeamColor state = Stander?.Team ?? TeamColor.None;
+            switch (state) {
+                case TeamColor.None:
                     TileControl.ImageVisibility = Collapsed;
                     break;
-                case TileState.Red:
+                case TeamColor.Red:
                     TileControl.ImageVisibility = Visible;
                     TileControl.ImageSource = "/Assets/Pawns/RedPawn.png";
 
                     break;
-                case TileState.Green:
+                case TeamColor.Green:
                     TileControl.ImageVisibility = Visible;
                     TileControl.ImageSource = "/Assets/Pawns/GreenPawn.png";
 
                     break;
-                case TileState.Blue:
+                case TeamColor.Blue:
                     TileControl.ImageVisibility = Visible;
                     TileControl.ImageSource = "/Assets/Pawns/BluePawn.png";
 
                     break;
-                case TileState.Yellow:
+                case TeamColor.Yellow:
                     TileControl.ImageVisibility = Visible;
                     TileControl.ImageSource = "/Assets/Pawns/YellowPawn.png";
 

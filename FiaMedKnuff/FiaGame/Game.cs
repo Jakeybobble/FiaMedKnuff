@@ -35,7 +35,7 @@ namespace FiaMedKnuff.FiaGame {
 
             // Create each tile class so that a TileControl can register itself to it after loading
             var homeTiles = new Dictionary<int, Tile>();
-            Tile.TileState[] teams = { Tile.TileState.Red, Tile.TileState.Yellow, Tile.TileState.Green, Tile.TileState.Blue };
+            Tile.TeamColor[] teams = { Tile.TeamColor.Red, Tile.TeamColor.Yellow, Tile.TeamColor.Green, Tile.TeamColor.Blue };
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
                     var team = teams[i];
@@ -43,7 +43,6 @@ namespace FiaMedKnuff.FiaGame {
 
                     // Create the tile...
                     var tile = new Tile(space);
-                    tile.State = team;
                     homeTiles.Add(space, tile);
 
                     // ...Create the pawn
