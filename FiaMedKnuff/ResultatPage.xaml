@@ -18,21 +18,22 @@
             <Image Height="100" Width="100" Source="/Assets/pawn_2.png"/>
         </Grid>
         
-        <Border Background="OrangeRed" 
-                CornerRadius="20" Margin="535,115,410,150">
-            
-                <Grid>
-                    
-                 <!-- Innehållet i din ruta kan gå här -->
-                 <Rectangle Fill= "White"  RadiusX="40"  RadiusY="40" Width="300" Height="300" Margin="130,145,125,290" />
-                 <TextBlock Text="din text här"
-                       Foreground="Black"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                     FontSize="40"/>
-                <Image HorizontalAlignment="Left" Height="100" Margin="-310,145,0,0" VerticalAlignment="Top" Width="100"/>
-            </Grid>
-        </Border>
+                        Foreground="Black"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         FontSize="30" FontWeight="Bold" Width="300"
+                        TextWrapping="Wrap"
+                        TextAlignment="Center"/>
 
+                    </StackPanel>
+                </Border>
+
+
+                <Line X1="0" Y1="80" X2="400" Y2="80" Margin="5" 
+                    Stroke="Black" StrokeThickness="2" HorizontalAlignment="Center"/>
+                <Button Content="Tillbaka til start" Width="300"  Height="80" Margin="60"
+                 FontSize="30" Click="Button_Click" />
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>
