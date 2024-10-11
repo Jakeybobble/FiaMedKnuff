@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FiaMedKnuff.FiaGame;
+using Windows.UI.Core;
 
 // Denna klass använder för tillfället kod genererat med ChatGPT
 
@@ -24,6 +25,11 @@ namespace FiaMedKnuff {
         public TileControl() {
             this.InitializeComponent();
         }
+
+        /// <summary>
+        /// Controls whether the click or hover events should run
+        /// </summary>
+        public bool Selectable = true;
 
         /// <summary>
         /// Runs once the component is loaded, after the properties are set in XAML
@@ -94,5 +100,18 @@ namespace FiaMedKnuff {
             set => SetValue(SpaceTypeProperty, value);
         }
 
+        private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
+            if (!Selectable) return;
+            Trace.WriteLine("Boop!");
+        }
+
+        private void Border_PointerEntered(object sender, PointerRoutedEventArgs e) {
+            if (!Selectable) return;
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Hand, 1);
+        }
+
+        private void Border_PointerExited(object sender, PointerRoutedEventArgs e) {
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 1);
+        }
     }
 }
