@@ -9,7 +9,7 @@ namespace FiaMedKnuff.FiaGame {
     internal static class GameEvents {
         public static void OnTileClicked(Tile tile) {
             Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
-            tile.Stander?.Move(1); // Move the stander if it exists
+            tile.Stander?.Move(GameManager.CurrentDieNumber); // Move the stander if it exists
         }
 
         public static void OnDieClicked() {
