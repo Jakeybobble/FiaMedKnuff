@@ -37,7 +37,7 @@
 
                 <Line X1="0" Y1="80" X2="400" Y2="80" Margin="5" 
                     Stroke="Black" StrokeThickness="2" HorizontalAlignment="Center"/>
-                <Button Content="Tillbaka til start" Width="300"  Height="80" Margin="60"
+                <Button Name="bt_tillbaka"  Content="Tillbaka til start" Width="300"  Height="80" Margin="60"
                  FontSize="30" Click="Button_Click" />
             </StackPanel>
         </Border>
