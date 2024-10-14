@@ -6,14 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FiaMedKnuff.FiaGame {
-    internal static class GameEvents {
-        public static void OnTileClicked(Tile tile) {
-            Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
-            tile.Stander?.Move(GameManager.CurrentDieNumber); // Move the stander if it exists
+    internal static class GameEvents
+    {
+        public static void OnTileClicked(Tile tile) 
+        {
+            if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
+            {
+                Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
+                tile.Stander?.Move(GameManager.CurrentDieNumber); // Move the pawn if it exists
+
+                GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
+                TileControl.Selectable = false;
+            }           
         }
 
-        public static void OnDieClicked() {
-            throw new NotImplementedException();
+        public static int OnDieClicked() {
+            
+            Random rnd = new Random();
+            int dieThrow = rnd.Next(1, 7);
+
+            return dieThrow;
         }
     }
 }
