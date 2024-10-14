@@ -51,6 +51,8 @@ namespace FiaMedKnuff.FiaGame {
                 Tile to = GameManager.CurrentGame.Tiles[SpaceType.Surrounding][(CurrentTile.Space + spaces) % Game.Spaces];
                 Move(to);
             }
+
+
         }
 
     }

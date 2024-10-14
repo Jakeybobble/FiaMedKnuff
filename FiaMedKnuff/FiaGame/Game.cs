@@ -22,6 +22,8 @@ namespace FiaMedKnuff.FiaGame {
         public int CurrentTeamIndex = 0;
         public Team CurrentTeam => Teams[CurrentTeamIndex];
 
+        public GameState CurrentGameState = GameState.PreRoll;
+
         public enum GameState {
             /// <summary>
             /// Before the player has clicked the die.

@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace FiaMedKnuff.FiaGame {
     internal static class GameManager {
         public static int CurrentDieNumber;
-
-        public static int AmountOfDiceRolled = 0;
-
+                
         public static Game Game;
 
         /// <summary>

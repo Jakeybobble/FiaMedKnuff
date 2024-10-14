@@ -29,11 +29,11 @@ namespace FiaMedKnuff {
 
         private void DieButton_Click(object sender, RoutedEventArgs e)
         {
-            if (GameManager.AmountOfDiceRolled == 0)
+            
+            if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PreRoll)
             {
-                
-                Random rnd = new Random();
-                int dieThrow = rnd.Next(1, 7);
+                int dieThrow= GameEvents.OnDieClicked();
+               
                 DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
 
                 ImageBrush img = new ImageBrush();
@@ -41,18 +41,17 @@ namespace FiaMedKnuff {
 
                 DieButton.Background = img;
 
-                GameManager.CurrentDieNumber = dieThrow;
-                
-                Trace.WriteLine(GameManager.AmountOfDiceRolled);
-                GameManager.AmountOfDiceRolled++;
+                GameManager.CurrentDieNumber = dieThrow;                                
                 TileControl.Selectable = true;
-            }
-            else if (GameManager.AmountOfDiceRolled == 1)
-            {
-                DieTextBlock.Text = $"Det är inte din tur.";
-            }
-            
 
+                GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+
+            }
+            else if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
+            {
+                DieTextBlock.Text = $"Det är inte din tur.";                
+            }        
+               
         }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
