@@ -29,7 +29,7 @@ namespace FiaMedKnuff {
         /// <summary>
         /// Controls whether the click or hover events should run
         /// </summary>
-        public static bool Selectable = true;
+        public static bool Selectable = false;
 
         private Tile tile;
 
