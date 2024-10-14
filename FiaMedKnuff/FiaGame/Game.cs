@@ -80,6 +80,9 @@ namespace FiaMedKnuff.FiaGame {
 
             Tiles.Add(SpaceType.Center, new Dictionary<int, Tile> { { 0, new Tile(0) } });
 
+            // Generate a path for the pawn to move on... TODO: Do this for each team instead
+            Pawn.GenerateHappyPath();
+            
         }
 
     }
