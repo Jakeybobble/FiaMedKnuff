@@ -96,12 +96,11 @@ namespace FiaMedKnuff {
             e.Handled = true;     
         }
 
-        // Clicking "Starta" navigates the user to the gameboard.
+        // Clicking "Starta" clears the gameboard, and starts a new game.
         private void StartaBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //TBD Activating this makes the tiles be loaded again but as duplicates.
-
-            //Frame.Navigate(typeof(GamePage));
+        {            
+            GameManager.Init();
+            Frame.Navigate(typeof(GamePage));
         }
 
         private void RulesBtn_Click(object sender, RoutedEventArgs e)
