@@ -1,5 +1,7 @@
-﻿using System;
+﻿using FiaMedKnuff.FiaGame;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,14 +29,30 @@ namespace FiaMedKnuff {
 
         private void DieButton_Click(object sender, RoutedEventArgs e)
         {
-            Random rnd = new Random();
-            int dieThrow = rnd.Next(1, 7);
-            DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
+            if (GameManager.AmountOfDiceRolled == 0)
+            {
+                
+                Random rnd = new Random();
+                int dieThrow = rnd.Next(1, 7);
+                DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
 
-            ImageBrush img = new ImageBrush();
-            img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
 
-            DieButton.Background = img;
+                DieButton.Background = img;
+
+                GameManager.CurrentDieNumber = dieThrow;
+                
+                Trace.WriteLine(GameManager.AmountOfDiceRolled);
+                GameManager.AmountOfDiceRolled++;
+                TileControl.Selectable = true;
+            }
+            else if (GameManager.AmountOfDiceRolled == 1)
+            {
+                DieTextBlock.Text = $"Det är inte din tur.";
+            }
+            
+
         }
     }
 }
