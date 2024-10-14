@@ -26,8 +26,8 @@ namespace FiaMedKnuff {
         }
 
         /// <summary>
-<<<<<<< Updated upstream
-=======
+
+
         /// Controls whether the click or hover events should run
         /// </summary>
         public static bool Selectable = false;
@@ -35,7 +35,7 @@ namespace FiaMedKnuff {
         private Tile tile;
 
         /// <summary>
->>>>>>> Stashed changes
+
         /// Runs once the component is loaded, after the properties are set in XAML
         /// </summary>
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
