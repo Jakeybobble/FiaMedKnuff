@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FiaMedKnuff.FiaGame;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace FiaMedKnuff
         /// </summary>
         public App()
         {
+            GameManager.Init();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
@@ -67,7 +69,7 @@ namespace FiaMedKnuff
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(ResultatPage), e.Arguments);
+                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
 
                 // Force the window to be the right size at launch
