@@ -148,9 +148,6 @@
     <Content Include="Assets\Crown.png" />
     <Content Include="Assets\pawn_2.png" />
     <Content Include="Assets\gear-icon-png-2221.png" />
-    <Content Include="Assets\Pawn.png" />
-    <Content Include="Assets\RedPawn.png" />
-    <Content Include="Assets\test_pawn.png" />
     <Content Include="Assets\Die\Die1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
