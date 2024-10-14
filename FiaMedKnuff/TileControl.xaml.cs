@@ -60,6 +60,10 @@ namespace FiaMedKnuff {
             tile.Refresh();
             //Trace.WriteLine(tile.State);
 
+            if (tile.Space == 10) {
+                HighlightingOpacity = 0.5f;
+            }
+
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
@@ -93,6 +97,14 @@ namespace FiaMedKnuff {
         public int Space {
             get => space;
             set => space = value;
+        }
+
+        public static readonly DependencyProperty HighlightingOpacityProperty =
+            DependencyProperty.Register("HighlightingOpacity", typeof(float), typeof(TileControl), new PropertyMetadata(0f));
+
+        public float HighlightingOpacity {
+            get => (float)GetValue(HighlightingOpacityProperty);
+            set => SetValue(HighlightingOpacityProperty, value);
         }
 
         public static readonly DependencyProperty SpaceTypeProperty =

@@ -21,7 +21,16 @@
             Tapped="Border_Tapped"
             PointerEntered="Border_PointerEntered"
             PointerExited="Border_PointerExited">
-        <Image Source="{x:Bind ImageSource, Mode=OneWay}"
-               Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
+        <Grid>
+            <Grid Opacity="{x:Bind HighlightingOpacity, Mode=OneWay}">
+                <Border BorderBrush="#F990FF" BorderThickness="6" CornerRadius="150" Opacity="0.5">
+                </Border>
+                <Border BorderBrush="#F990FF" BorderThickness="15" CornerRadius="150" Opacity="0.5">
+                </Border>
+            </Grid>
+            <Image Source="{x:Bind ImageSource, Mode=OneWay}"
+Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
+        </Grid>
+        
     </Border>
 </UserControl>
