@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FiaMedKnuff.FiaGame;
+using Windows.UI.Core;
 
 // Denna klass använder för tillfället kod genererat med ChatGPT
 
@@ -26,16 +27,13 @@ namespace FiaMedKnuff {
         }
 
         /// <summary>
-
-
         /// Controls whether the click or hover events should run
         /// </summary>
-        public static bool Selectable = false;
+        public bool Selectable = true;
 
         private Tile tile;
 
         /// <summary>
-
         /// Runs once the component is loaded, after the properties are set in XAML
         /// </summary>
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
@@ -44,18 +42,24 @@ namespace FiaMedKnuff {
                 return;
             }
 
-            var spacesMap = GameManager.CurrentGame.Spaces;
-            if(Space != -1) {
-                if (!spacesMap.ContainsKey(SpaceType)) {
-                    spacesMap[SpaceType] = new Dictionary<int, TileControl>();
-                }
-                if (!spacesMap[SpaceType].ContainsKey(Space)) {
-                    spacesMap[SpaceType].Add(Space, this);
-                    Trace.WriteLine($"Added Tile {SpaceType} {Space}...");
-                } else {
-                    throw new Exception("A TileControl with duplicate value was found.");
-                }
-            }
+            Register();
+
+        }
+
+        /// <summary>
+        /// Register the tile into the current game // TODO: Better summary
+        /// </summary>
+        private void Register() {
+            GameManager.CurrentGame.RegisterTiles();
+
+            var tile = GameManager.CurrentGame.Tiles[SpaceType][Space];
+            tile.TileControl = this;
+            this.tile = tile;
+
+            //tile.Update(tile.State);
+            tile.Refresh();
+            //Trace.WriteLine(tile.State);
+
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
@@ -99,5 +103,18 @@ namespace FiaMedKnuff {
             set => SetValue(SpaceTypeProperty, value);
         }
 
+        private void Border_Tapped(object sender, TappedRoutedEventArgs e) {
+            if (!Selectable) return;
+            GameEvents.OnTileClicked(tile);
+        }
+
+        private void Border_PointerEntered(object sender, PointerRoutedEventArgs e) {
+            if (!Selectable) return;
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Hand, 1);
+        }
+
+        private void Border_PointerExited(object sender, PointerRoutedEventArgs e) {
+            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 1);
+        }
     }
 }

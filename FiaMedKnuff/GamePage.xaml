@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{StaticResource StandardOrange}">
 
     <Page.Resources>
         <Style x:Key="ButtonStyleDie" TargetType="Button">
@@ -55,20 +55,22 @@
             </Setter>
         </Style>
     </Page.Resources>
-    
-    
-    <Grid Background="{StaticResource StandardOrange}" Padding="10">
+
+
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="280"></ColumnDefinition>
+            <ColumnDefinition MinWidth="1000"></ColumnDefinition>
+            <ColumnDefinition Width="280"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <Button>Nytt spel</Button>
-            <Button>Regler</Button>
+            <Button Width="270" Height="75" Content="Nytt Spel" Background="{StaticResource OrangeButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Left" Margin="10,10,0,0" Click="NyttSpelBtn_Click" />
         </StackPanel>
         <StackPanel Grid.Column="2">
-            <Button>Inställningar</Button>
+            <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Click="SettingsBtn_Click">
+                <Image Width="65" Height="65" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/gear-icon-png-2221.png"/>
+            </Button>
+            <Button Name="RulesBtn" Content="?" Width="75" Height="75" Background="{StaticResource WhiteButton}" FontSize="50" FontFamily="Inconsolata" FontWeight="Bold" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" Margin="0,10,10,0" Click="RulesBtn_Click" /> 
         </StackPanel>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -193,25 +195,25 @@
                                 
                                 <!-- Color tiles -->
                                 <!-- Red team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="1" BackgroundColor="{StaticResource RedTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="2" BackgroundColor="{StaticResource RedTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="3" BackgroundColor="{StaticResource RedTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="4" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="0" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="1" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="1" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="2" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="2" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="3" BackgroundColor="{StaticResource RedTeam}"/>
+                                <local:TileControl Space="3" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="4" BackgroundColor="{StaticResource RedTeam}"/>
                                 <!-- Yellow team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="6" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="7" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="8" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="9" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="4" SpaceType="TowardsCenter" Grid.Column="9" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="5" SpaceType="TowardsCenter" Grid.Column="8" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="6" SpaceType="TowardsCenter" Grid.Column="7" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
+                                <local:TileControl Space="7" SpaceType="TowardsCenter" Grid.Column="6" Grid.Row="5" BackgroundColor="{StaticResource YellowTeam}"/>
                                 <!-- Green team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="9" BackgroundColor="{StaticResource GreenTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="8" BackgroundColor="{StaticResource GreenTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="7" BackgroundColor="{StaticResource GreenTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="6" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="8" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="9" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="9" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="8" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="10" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="7" BackgroundColor="{StaticResource GreenTeam}"/>
+                                <local:TileControl Space="11" SpaceType="TowardsCenter" Grid.Column="5" Grid.Row="6" BackgroundColor="{StaticResource GreenTeam}"/>
                                 <!-- Blue team -->
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="1" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="2" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="3" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
-                                <local:TileControl SpaceType="TowardsCenter" Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl ImageSource="/Assets/Pawn.png"  Space="12" SpaceType="TowardsCenter" Grid.Column="1" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Space="13" SpaceType="TowardsCenter" Grid.Column="2" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Space="14" SpaceType="TowardsCenter" Grid.Column="3" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
+                                <local:TileControl Space="15" SpaceType="TowardsCenter" Grid.Column="4" Grid.Row="5" BackgroundColor="{StaticResource BlueTeam}"/>
                                 
                                 <!-- Team circles -->
                                 <!-- Red -->
@@ -308,5 +310,36 @@
                 </Border>
             </Grid>
         </Grid>
+        <Popup Name="NewGameOptionsPopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsLightDismissEnabled="True">
+            <Grid Name="NewGameOptionsPopupGrid" Background="#80000000" Tapped="PopupOutside_Tapped">
+                <StackPanel>
+                    <Grid Tapped="PopupInside_Tapped" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="630" Height="800" Margin="645,105,645,105">
+                        <Button Name="NewGameCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click"/>
+                        <TextBlock Width="200" Height="70" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Margin="0,55,0,0"/>
+                        <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Margin="0,165,0,0"/>
+
+                        <Grid BorderBrush="Black" BorderThickness="5" CornerRadius="15" Width="200" Height="200" Background="{StaticResource StandardWhite}">
+                            <Image Width="150" Height="150" Source="/Assets/Pawns/RedPawn.png"/>
+                        </Grid>
+
+                        <Button Opacity="0.5" Width="270" Height="75" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Margin="0,500,0,0" Click="StartaBtn_Click" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Popup>
+
+        <Popup Name="RulesPopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsLightDismissEnabled="True">
+            <Grid Name="RulesPopupGrid" Background="#80000000" Tapped="PopupOutside_Tapped">
+                <StackPanel>
+                    <Grid Tapped="PopupInside_Tapped" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="1030" Height="800" Margin="400,105,645,105">
+                        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled"> 
+                            <TextBlock Name="RulesText" Width="950" Text="Placeholder Text" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" FontFamily="Inconsolata" Margin="0,60,0,0"/>
+                        </ScrollViewer>
+                        <Button Name="RulesCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Popup>
+
     </Grid>
 </Page>
