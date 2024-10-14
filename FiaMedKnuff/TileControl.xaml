@@ -30,6 +30,7 @@
             </Grid>
             <Image Source="{x:Bind ImageSource, Mode=OneWay}"
 Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
+            <Image Source="{x:Bind HighlightImageSource, Mode=OneWay}" Opacity="{x:Bind HighlightImageOpacity, Mode=OneWay}"/>
         </Grid>
         
     </Border>

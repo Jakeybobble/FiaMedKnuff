@@ -60,10 +60,6 @@ namespace FiaMedKnuff {
             tile.Refresh();
             //Trace.WriteLine(tile.State);
 
-            if (tile.Space == 10) {
-                HighlightingOpacity = 0.5f;
-            }
-
         }
 
         public static readonly DependencyProperty ImageSourceProperty =
@@ -71,7 +67,10 @@ namespace FiaMedKnuff {
 
         public string ImageSource {
             get { return (string)GetValue(ImageSourceProperty); }
-            set { SetValue(ImageSourceProperty, value); }
+            set {
+                HighlightImageSource = $"{value.Remove(value.Length-4)}_Highlighted.png";
+                SetValue(ImageSourceProperty, value);
+            }
         }
 
         public static readonly DependencyProperty ImageVisibilityProperty =
@@ -105,6 +104,22 @@ namespace FiaMedKnuff {
         public float HighlightingOpacity {
             get => (float)GetValue(HighlightingOpacityProperty);
             set => SetValue(HighlightingOpacityProperty, value);
+        }
+
+        public static readonly DependencyProperty HighlightImageOpacityProperty =
+            DependencyProperty.Register("HighlightImageOpacity", typeof(float), typeof(TileControl), new PropertyMetadata(0f));
+
+        public float HighlightImageOpacity {
+            get => (float)GetValue(HighlightImageOpacityProperty);
+            set => SetValue(HighlightImageOpacityProperty, value);
+        }
+
+        public static readonly DependencyProperty HighlightImageSourceProperty =
+            DependencyProperty.Register("HighlightImageSource", typeof(string), typeof(TileControl), new PropertyMetadata("Assets/Pawns/RedPawn_Highlighted.png"));
+
+        public string HighlightImageSource {
+            get { return (string)GetValue(HighlightImageSourceProperty); }
+            set { SetValue(HighlightImageSourceProperty, value); }
         }
 
         public static readonly DependencyProperty SpaceTypeProperty =
