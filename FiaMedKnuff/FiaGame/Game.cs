@@ -7,29 +7,58 @@ using System.Threading.Tasks;
 namespace FiaMedKnuff.FiaGame {
     class Game {
 
-        //public Dictionary<SpaceType, Dictionary<int, TileControl>> Spaces = new Dictionary<SpaceType, Dictionary<int, TileControl>>();
+        public static int Spaces = 40;
+
         public Dictionary<SpaceType, Dictionary<int, Tile>> Tiles = new Dictionary<SpaceType, Dictionary<int, Tile>>();
 
-        public Game() {
+        /// <summary>
+        /// The current turn of the game. Increments by the end of the turn.
+        /// </summary>
+        public int Turn = 0;
 
+        public Team[] Teams = new Team[] {
+            new Team(TeamColor.Red, Team.TeamType.Player)
+        };
+        public int CurrentTeamIndex = 0;
+        public Team CurrentTeam => Teams[CurrentTeamIndex];
+
+        public enum GameState {
+            /// <summary>
+            /// Before the player has clicked the die.
+            /// </summary>
+            PreRoll,
+            /// <summary>
+            /// The state that generates possible choices after the player rolling the die.
+            /// </summary>
+            PostRoll
+        }
+
+        public Game() {
+            // TODO: When it is time, register tiles and players here instead.
         }
 
         private bool HasRegistered = false;
+        /// <summary>
+        /// Fills the Tiles dictionary with tiles and puts pawns into each home
+        /// </summary>
         public void RegisterTiles() {
             if (HasRegistered) return;
             HasRegistered = true;
 
             // Create each tile class so that a TileControl can register itself to it after loading
             var homeTiles = new Dictionary<int, Tile>();
-            Tile.TileState[] teams = { Tile.TileState.Red, Tile.TileState.Yellow, Tile.TileState.Green, Tile.TileState.Blue };
+            TeamColor[] teams = { TeamColor.Red, TeamColor.Yellow, TeamColor.Green, TeamColor.Blue };
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
                     var team = teams[i];
                     var space = i * 4 + j;
 
+                    // Create the tile...
                     var tile = new Tile(space);
-                    tile.State = team;
                     homeTiles.Add(space, tile);
+
+                    // ...Create the pawn
+                    var pawn = new Pawn(team, tile);
                 }
                 
             }
@@ -56,4 +85,5 @@ namespace FiaMedKnuff.FiaGame {
     public enum SpaceType {
         Home, TowardsCenter, Surrounding, Center
     }
+
 }

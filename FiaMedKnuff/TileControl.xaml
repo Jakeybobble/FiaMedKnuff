@@ -10,7 +10,18 @@
     d:DesignWidth="64"
     Loaded="UserControl_Loaded">
 
-    <Border Style="{StaticResource TileBorder}" Background="{x:Bind BackgroundColor, Mode=OneWay}" Margin="2">
-        <Image Source="{x:Bind ImageSource, Mode=OneWay}" Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
+    <!-- Properties:
+            - BackgroundColor,
+            - ImageSource,
+            - ImageVisibility
+    -->
+    <Border Style="{StaticResource TileBorder}"
+            Background="{x:Bind BackgroundColor, Mode=OneWay}"
+            Margin="2"
+            Tapped="Border_Tapped"
+            PointerEntered="Border_PointerEntered"
+            PointerExited="Border_PointerExited">
+        <Image Source="{x:Bind ImageSource, Mode=OneWay}"
+               Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
     </Border>
 </UserControl>
