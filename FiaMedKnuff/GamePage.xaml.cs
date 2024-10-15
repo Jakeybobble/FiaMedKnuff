@@ -115,15 +115,16 @@ namespace FiaMedKnuff {
             e.Handled = true;     
         }
 
+
         /// <summary>
-        /// Clicking "Starta" navigates the user to the gameboard.
+        /// Clicking "Starta" navigates the user to the gameboard, and starts a new game.
         /// </summary>
         /// <param name="sender">Starta button</param>
-        private void StartaBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //TBD Activating this makes the tiles be loaded again but as duplicates.
 
-            //Frame.Navigate(typeof(GamePage));
+        private void StartaBtn_Click(object sender, RoutedEventArgs e)
+        {            
+            GameManager.Init();
+            Frame.Navigate(typeof(GamePage));
         }
 
         private void RulesBtn_Click(object sender, RoutedEventArgs e)
