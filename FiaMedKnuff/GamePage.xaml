@@ -122,30 +122,30 @@
                             <!-- Spaces -->
                             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
+                                    <ColumnDefinition Width="76"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
+                                    <RowDefinition Height="76"/>
                                 </Grid.RowDefinitions>
 
                                 <!-- Center tile -->
