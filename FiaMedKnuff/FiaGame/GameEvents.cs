@@ -13,7 +13,7 @@ namespace FiaMedKnuff.FiaGame {
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
             {
                 Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
-                tile.Stander?.Move(GameManager.CurrentDieNumber); // Move the pawn if it exists
+                tile.Stander?.MoveInPath(GameManager.CurrentDieNumber); // Move the pawn if it exists
 
                 GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
                 TileControl.Selectable = false;
