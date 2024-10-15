@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace FiaMedKnuff.FiaGame {
     internal class Team {
+
         public TeamColor TeamColor = TeamColor.None;
+
         public enum TeamType {
             Player, Bot
         }
@@ -16,10 +18,15 @@ namespace FiaMedKnuff.FiaGame {
         /// The ID of the space each pawn in the team starts on
         /// </summary>
         public int StartingSpace = 12;
+
         /// <summary>
         /// The ID of the space each pawn enters their center lane on
         /// </summary>
         public int TowardsCenterStartingSpace = 4;
+
+        /// <summary>
+        /// The path which each pawn in the team will move on
+        /// </summary>
         public List<Tile> Path = new List<Tile>();
 
         public Team() { }
