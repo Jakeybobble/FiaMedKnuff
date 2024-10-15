@@ -135,6 +135,7 @@
     <Compile Include="ResultatPage.xaml.cs">
       <DependentUpon>ResultatPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TextBlockChangeContent.cs" />
     <Compile Include="TileControl.xaml.cs">
       <DependentUpon>TileControl.xaml</DependentUpon>
     </Compile>

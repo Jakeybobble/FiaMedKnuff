@@ -341,5 +341,21 @@
             </Grid>
         </Popup>
 
+        <Popup Name="DieResultDecisionPopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid Background="#80000000">
+                <StackPanel>
+                    <Grid Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="1030" Height="800" Margin="400,105,645,105">
+                        <TextBlock Name="DieDecisionText" Width="950" Text="Vill du flytta din pjäs till cirkel 1 eller cirkel 6?" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" FontFamily="Inconsolata" Margin="0,60,0,0"/>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Name="Position1Option" Width="270" Height="75" Content="Cirkel 1" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,100,50" Click="Position1Option_Click"/>
+                            <Button Name="Position6Option" Width="270" Height="75" Content="Cirkel 6" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" Click="Position6Option_Click"/>
+                        </StackPanel>      
+                        
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Popup>
+
     </Grid>
 </Page>

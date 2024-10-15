@@ -15,7 +15,7 @@ namespace FiaMedKnuff.FiaGame {
         Yellow,
     }
 
-    internal class Pawn {
+    public class Pawn {
 
         public TeamColor Team;
 
@@ -47,36 +47,36 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
-            if (GameManager.CurrentDieNumber == 1 && CurrentTile.SpaceType == SpaceType.Home)
+
+            if(CurrentTile.SpaceType == SpaceType.Home)
             {
-                SpaceInPath = 0;
-                Move(HappyPath[SpaceInPath]);
+                if (GameManager.CurrentDieNumber == 1)
+                {
+                    SpaceInPath = 0;
+                    Move(HappyPath[SpaceInPath]);
+                }
+                else if (GameManager.CurrentDieNumber == 6)
+                {
+                    SpaceInPath = spaces;
+                    Move(HappyPath[SpaceInPath]);
+
+                    string text = "Du får rulla en gång till!";
+                    GamePage.ChangeOutputTextBox(text);
+                }
             }
-            else if(GameManager.CurrentDieNumber == 6 && CurrentTile.SpaceType == SpaceType.Home)
-            {
-                SpaceInPath = 5;
-                Move(HappyPath[SpaceInPath]);
-            }
-            else if(GameManager.CurrentDieNumber == 1 && CurrentTile.SpaceType == SpaceType.Surrounding)
+            else
             {
                 SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
                 Move(HappyPath[SpaceInPath]);
+
+                if(GameManager.CurrentDieNumber == 6)
+                {
+                    string text = "Du får rulla en gång till!";
+
+                    GamePage.ChangeOutputTextBox(text);
+                }
+
             }
-            else if (GameManager.CurrentDieNumber == 6 && CurrentTile.SpaceType == SpaceType.Surrounding)
-            {
-                SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
-                Move(HappyPath[SpaceInPath]);
-                //GamePage.DieTextBlock.Text = "";
-            }
-            else if (GameManager.CurrentDieNumber != 1 && GameManager.CurrentDieNumber != 6 && CurrentTile.SpaceType == SpaceType.Surrounding)
-            {
-                SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
-                Move(HappyPath[SpaceInPath]);
-            }
-
-
-
-
         }
 
         // TODO: Have these be stored in each team instead
