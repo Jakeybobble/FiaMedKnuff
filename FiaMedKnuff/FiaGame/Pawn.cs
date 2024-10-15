@@ -17,7 +17,8 @@ namespace FiaMedKnuff.FiaGame {
 
     internal class Pawn {
 
-        public TeamColor Team;
+        public TeamColor TeamColor => Team.TeamColor;
+        public Team Team;
 
         public Tile CurrentTile;
         public int Space => CurrentTile.Space;
@@ -25,8 +26,9 @@ namespace FiaMedKnuff.FiaGame {
 
         public Pawn() { }
 
-        public Pawn(TeamColor team, Tile currentTile) {
+        public Pawn(Team team, Tile currentTile) {
             this.Team = team; this.CurrentTile = currentTile;
+            Trace.WriteLine("I've been put into this team.");
             currentTile.Stander = this;
         }
 
@@ -47,13 +49,17 @@ namespace FiaMedKnuff.FiaGame {
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
             if (CurrentTile.SpaceType == SpaceType.Home) {
-                Move(HappyPath[0]);
+                SpaceInPath = 0;
+                Move(Team.Path[0]);
             } else {
-                SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
-                Move(HappyPath[SpaceInPath]);
+                Move(spaces);
             }
 
+        }
 
+        public void Move(int spaces) {
+            SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, Team.Path.Count - 1);
+            Move(Team.Path[SpaceInPath]);
         }
 
         // TODO: Have these be stored in each team instead

@@ -12,11 +12,14 @@ namespace FiaMedKnuff.FiaGame {
         {
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
             {
+                if (GameManager.CurrentGame.CurrentTeam != tile.Stander.Team) return;
                 Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
                 tile.Stander?.MoveInPath(GameManager.CurrentDieNumber); // Move the pawn if it exists
 
                 GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
                 TileControl.Selectable = false;
+
+                GameManager.CurrentGame.EndTurn();
             }           
         }
 
