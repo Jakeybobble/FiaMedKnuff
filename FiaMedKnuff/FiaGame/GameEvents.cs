@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace FiaMedKnuff.FiaGame {
     internal static class GameEvents
@@ -17,6 +18,8 @@ namespace FiaMedKnuff.FiaGame {
 
                 GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
                 TileControl.Selectable = false;
+                //var gamePage = (GamePage)Window.Current.Content;
+                //gamePage.DieTextBlock.Text = "";
             }           
         }
 

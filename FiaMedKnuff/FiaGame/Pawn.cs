@@ -39,6 +39,7 @@ namespace FiaMedKnuff.FiaGame {
             from.Stander = null; to.Stander = this;
             CurrentTile = to;
             from.Refresh(); to.Refresh();
+            Trace.WriteLine(CurrentTile.SpaceType);
         }
 
         /// <summary>
@@ -46,12 +47,34 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
-            if (CurrentTile.SpaceType == SpaceType.Home) {
-                Move(HappyPath[0]);
-            } else {
+            if (GameManager.CurrentDieNumber == 1 && CurrentTile.SpaceType == SpaceType.Home)
+            {
+                SpaceInPath = 0;
+                Move(HappyPath[SpaceInPath]);
+            }
+            else if(GameManager.CurrentDieNumber == 6 && CurrentTile.SpaceType == SpaceType.Home)
+            {
+                SpaceInPath = 5;
+                Move(HappyPath[SpaceInPath]);
+            }
+            else if(GameManager.CurrentDieNumber == 1 && CurrentTile.SpaceType == SpaceType.Surrounding)
+            {
                 SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
                 Move(HappyPath[SpaceInPath]);
             }
+            else if (GameManager.CurrentDieNumber == 6 && CurrentTile.SpaceType == SpaceType.Surrounding)
+            {
+                SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
+                Move(HappyPath[SpaceInPath]);
+                //GamePage.DieTextBlock.Text = "";
+            }
+            else if (GameManager.CurrentDieNumber != 1 && GameManager.CurrentDieNumber != 6 && CurrentTile.SpaceType == SpaceType.Surrounding)
+            {
+                SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
+                Move(HappyPath[SpaceInPath]);
+            }
+
+
 
 
         }

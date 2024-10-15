@@ -26,7 +26,6 @@ namespace FiaMedKnuff {
         public GamePage() {
             this.InitializeComponent();
         }
-
         private void DieButton_Click(object sender, RoutedEventArgs e)
         {
             
