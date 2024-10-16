@@ -40,6 +40,7 @@ namespace FiaMedKnuff {
         public static Popup dieDecisionPopup;
         public static Button position1Btn;
         public static Pawn stander;
+
         public static Border redTurnIndicator;
         public static Border yellowTurnIndicator;
         public static Border greenTurnIndicator;

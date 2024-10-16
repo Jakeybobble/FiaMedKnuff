@@ -29,15 +29,7 @@ namespace FiaMedKnuff.FiaGame {
         public Team CurrentTeam => Teams[CurrentTeamIndex];
 
         public GameState CurrentGameState = GameState.PreRoll;
-
-        public List<Border> TurnIndicator  = new List<Border>
-        {
-            GamePage.redTurnIndicator,
-            GamePage.yellowTurnIndicator,
-            GamePage.greenTurnIndicator,
-            GamePage.blueTurnIndicator
-        };
-
+               
         public enum GameState {
             /// <summary>
             /// Before the player has clicked the die.
@@ -107,24 +99,55 @@ namespace FiaMedKnuff.FiaGame {
         /// Runs once RegisterTiles() has finished
         /// </summary>
         private void PostRegister() {
-            //var currentBrush = TurnIndicator[CurrentTeamIndex];
-            //currentBrush.BorderBrush = (SolidColorBrush)App.Current.Resources["RedTeam"];
+            
             // Generate each team path
             foreach(Team team in Teams) {
                 team?.GeneratePath();
             }
+
+            StartTurn();         
+        }
+
+        public void StartTurn()
+        {
+            CurrentGameState = GameState.PreRoll;
+            CurrentTeamIndex = (CurrentTeamIndex + 1) % Teams.Count;
+
+            var border = GetTurnIndicator(CurrentTeam.TeamColor);
+            border.BorderBrush = (SolidColorBrush)App.Current.Resources["RedTeam"];
         }
 
         public void EndTurn() {
-            CurrentGameState = GameState.PreRoll;
+
+            var border = GetTurnIndicator(CurrentTeam.TeamColor);
+            border.BorderBrush = (SolidColorBrush)App.Current.Resources["StandardWhite"];
+
             Turn++;
-            CurrentTeamIndex = (CurrentTeamIndex + 1) % Teams.Count;
+            StartTurn();
         }
+
+        public static Border GetTurnIndicator(TeamColor color)
+        {
+            switch (color)
+            {
+                case TeamColor.Red:
+                    return GamePage.redTurnIndicator;
+                case TeamColor.Green:
+                    return GamePage.greenTurnIndicator;
+                case TeamColor.Blue:
+                    return GamePage.blueTurnIndicator;
+                case TeamColor.Yellow:
+                    return GamePage.yellowTurnIndicator;
+
+            } return null;
+
+        }
+
+       
 
     }
 
     public enum SpaceType {
         Home, TowardsCenter, Surrounding, Center
-    }
-
+    }  
 }
