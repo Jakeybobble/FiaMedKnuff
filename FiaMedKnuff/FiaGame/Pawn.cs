@@ -28,20 +28,27 @@ namespace FiaMedKnuff.FiaGame {
 
         public Pawn(Team team, Tile currentTile) {
             this.Team = team; this.CurrentTile = currentTile;
-            Trace.WriteLine("I've been put into this team.");
             currentTile.Stander = this;
         }
 
         /// <summary>
-        /// Move self from one tile to the other and refresh both tiles.
+        /// Set self to stand at set Tile
         /// </summary>
-        /// <param name="to">Tile to move to</param>
-        public void Move(Tile to) {
+        /// <param name="to">Tile to set position to</param>
+        public void SetTile(Tile to) {
             Tile from = CurrentTile;
             from.Stander = null; to.Stander = this;
             CurrentTile = to;
             from.Refresh(); to.Refresh();
-            Trace.WriteLine(CurrentTile.SpaceType);
+        }
+
+        /// <summary>
+        /// Set self to stand at set Tile in Team.Path
+        /// </summary>
+        /// <param name="space">Space index</param>
+        public void SetTile(int space) {
+            SpaceInPath = space;
+            SetTile(Team.Path[SpaceInPath]);
         }
 
         /// <summary>
@@ -49,16 +56,15 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
+
             if(CurrentTile.SpaceType == SpaceType.Home)
             {
                 if (GameManager.CurrentDieNumber == 1)
                 {
-                    SpaceInPath = 0;
-                    Move(Team.Path[SpaceInPath]);
+                    SetTile(0);
                 } else if (GameManager.CurrentDieNumber == 6)
                 {
-                    SpaceInPath = spaces;
-                    Move(Team.Path[SpaceInPath]);
+                    SetTile(spaces);
 
                     string text = "Du får rulla en gång till!";
                     GamePage.ChangeOutputTextBox(text);
@@ -66,22 +72,31 @@ namespace FiaMedKnuff.FiaGame {
             }
             else
             {
-                Move(spaces);
 
-                if(GameManager.CurrentDieNumber == 6)
-                {
-                    string text = "Du får rulla en gång till!";
+                if (SpaceInPath + spaces > Team.Path.Count - 1) { // Move back if roll is too high
+                    var count = Team.Path.Count - 1;
+                    var newSpace = count - (SpaceInPath + spaces) % count;
+                    SetTile(newSpace);
 
-                    GamePage.ChangeOutputTextBox(text);
+                } else {
+                    Move(spaces);
+
+                    if (GameManager.CurrentDieNumber == 6) {
+                        string text = "Du får rulla en gång till!";
+
+                        GamePage.ChangeOutputTextBox(text);
+                    }
                 }
-
             }
-
         }
 
+        /// <summary>
+        /// Move forwards in Team.Path
+        /// </summary>
+        /// <param name="spaces">Amount of spaces to move forwards</param>
         public void Move(int spaces) {
             SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, Team.Path.Count - 1);
-            Move(Team.Path[SpaceInPath]);
+            SetTile(Team.Path[SpaceInPath]);
             }
         }
     }
