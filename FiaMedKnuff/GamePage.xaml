@@ -95,9 +95,9 @@
                     <ColumnDefinition Width="500"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Grid BorderThickness="5" BorderBrush="Black" Grid.Column="0" CornerRadius="5" Background="White" Margin="10">
+                <Grid BorderThickness="5" BorderBrush="Black" Grid.Column="0" CornerRadius="5" Background="White" Margin="10,0,10,10" Height="80" VerticalAlignment="Bottom">
                     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">                       
-                        <TextBlock x:Name="DieTextBlock" Foreground="{StaticResource StandardText}" TextWrapping="Wrap" Text="Press the die button" FontSize="30" FontFamily="Inconsolata"/>
+                        <TextBlock x:Name="DieTextBlock" Foreground="{StaticResource StandardText}" TextWrapping="Wrap" Text="Tryck på tärningen" FontSize="30" FontFamily="Inconsolata" Height="36" VerticalAlignment="Top"/>
                     </Grid>
                 </Grid>
                 <!-- Die -->
