@@ -22,6 +22,7 @@ namespace FiaMedKnuff {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    
     public sealed partial class GamePage : Page {
         
         public GamePage() {
@@ -29,13 +30,20 @@ namespace FiaMedKnuff {
             changeOutputText = DieTextBlock;
             dieDecisionPopup = DieResultDecisionPopup;
             position1Btn = Position1Option;
+            redTurnIndicator = RedBorder;
+            yellowTurnIndicator = YellowBorder;
+            greenTurnIndicator = GreenBorder;
+            blueTurnIndicator = BlueBorder;
         }
 
         public static TextBlock changeOutputText;
         public static Popup dieDecisionPopup;
         public static Button position1Btn;
         public static Pawn stander;
-
+        public static Border redTurnIndicator;
+        public static Border yellowTurnIndicator;
+        public static Border greenTurnIndicator;
+        public static Border blueTurnIndicator;
 
         private void DieButton_Click(object sender, RoutedEventArgs e)
         {            

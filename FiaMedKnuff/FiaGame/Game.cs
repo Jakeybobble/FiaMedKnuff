@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace FiaMedKnuff.FiaGame {
     class Game {
@@ -27,6 +29,14 @@ namespace FiaMedKnuff.FiaGame {
         public Team CurrentTeam => Teams[CurrentTeamIndex];
 
         public GameState CurrentGameState = GameState.PreRoll;
+
+        public List<Border> TurnIndicator  = new List<Border>
+        {
+            GamePage.redTurnIndicator,
+            GamePage.yellowTurnIndicator,
+            GamePage.greenTurnIndicator,
+            GamePage.blueTurnIndicator
+        };
 
         public enum GameState {
             /// <summary>
@@ -97,6 +107,8 @@ namespace FiaMedKnuff.FiaGame {
         /// Runs once RegisterTiles() has finished
         /// </summary>
         private void PostRegister() {
+            //var currentBrush = TurnIndicator[CurrentTeamIndex];
+            //currentBrush.BorderBrush = (SolidColorBrush)App.Current.Resources["RedTeam"];
             // Generate each team path
             foreach(Team team in Teams) {
                 team?.GeneratePath();
