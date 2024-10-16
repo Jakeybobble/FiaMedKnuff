@@ -142,43 +142,53 @@
         </Style>
     </Page.Resources>
 
-    <StackPanel>
-        <Grid>
-            <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" Margin="0,20,20,0" VerticalAlignment="Top" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}">
+    <!-- It starts here -->
+    <Grid x:Name="ParentGrid" SizeChanged="ParentGrid_SizeChanged">
+        <Grid> <!-- Settings button and center box -->
+            <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}">
                 <Image Width="65" Height="65" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/gear-icon-png-2221.png"/>
             </Button>
 
-            <Grid Width="1035" Height="525" Background="{StaticResource StandardWhite}" HorizontalAlignment="Left" Margin="95,230,0,-230" CornerRadius="15" BorderThickness="5" BorderBrush="Black" >
-                <TextBlock Width="650" Height="165" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Fia med Knuff - Återkomsten" Foreground="{StaticResource StandardText}" FontSize="70" FontFamily="Inconsolata" TextWrapping="Wrap" FontWeight="Bold" Margin="80,30,0,0"/>
-
-                <Button Style="{StaticResource ButtonStyleFixOrangeGlobal}" Width="270" Height="75" Content="Nytt Spel" Background="{StaticResource OrangeButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" Margin="95,0,0,0" HorizontalAlignment="Left" Click="NyttSpelBtn_Click" Foreground="{StaticResource StandardText}"/>
-
-                <TextBlock Width="800" Height="70" HorizontalAlignment="Left" Text="Av Erika, Abbas, Henrik och Jacob" Foreground="{StaticResource StandardText}" FontSize="50" FontFamily="Inconsolata" TextWrapping="Wrap" Margin="95,325,0,127"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="95,390,0,35"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="185,390,0,35"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="275,390,0,35"/>
-                <Image Width="80" Height="100" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"  Margin="365,390,0,35"/>
+            <Grid Background="{StaticResource StandardWhite}" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="15" BorderThickness="5" BorderBrush="Black" Margin="60" MaxWidth="1024">
+                <Viewbox>
+                <StackPanel Orientation="Vertical" Margin="40, 30">
+                    <!-- Title-->
+                    <TextBlock Width="650" Height="165" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Fia med Knuff - Återkomsten" Foreground="{StaticResource StandardText}" FontSize="70" TextWrapping="Wrap" FontWeight="Bold" FontFamily="Inconsolata" Margin="0, 0, 0, 20"/>
+                    <!-- New Game button -->
+                    <Button Style="{StaticResource ButtonStyleFixOrangeGlobal}" Width="270" Height="75" Content="Nytt Spel" Background="{StaticResource OrangeButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Left" Click="NyttSpelBtn_Click" Foreground="{StaticResource StandardText}" Margin="0, 0, 0, 20"/>
+                    <!-- Credits text -->
+                    <TextBlock Width="800" Height="70" HorizontalAlignment="Left" Text="Av Erika, Abbas, Henrik och Jacob" Foreground="{StaticResource StandardText}" FontSize="50" FontFamily="Inconsolata" TextWrapping="Wrap"/>
+                    <!-- Pawns -->
+                    <StackPanel Orientation="Horizontal" Height="100">
+                        <Image Width="80" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"/>
+                        <Image Width="80" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"/>
+                        <Image Width="80" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"/>
+                        <Image Width="80" HorizontalAlignment="Left" Source="/Assets/Pawns/Pawn.png"/>
+                    </StackPanel>
+                </StackPanel>
+                </Viewbox>
+                
                                 
             </Grid>
 
-            <Popup Name="NewGameOptionsPopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsLightDismissEnabled="True">
-                <Grid Background="#80000000" Tapped="PopupOutside_Tapped">
-                    <StackPanel>
-                        <Grid Tapped="PopupInside_Tapped" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="630" Height="800" Margin="645,105,645,105">
-                            <Button Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleFixWhite}"/> 
-                            <TextBlock Width="200" Height="70" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Margin="0,55,0,0"/>
-                                <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Margin="0,165,0,0"/>
+            <Popup Name="NewGameOptionsPopup" IsOpen="True" IsLightDismissEnabled="False">
+                <Grid Background="#80000000" Tapped="PopupOutside_Tapped"
+                      x:Name="NewGameOptionsGrid">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Tapped="PopupInside_Tapped" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5">
+                        <Button Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleFixWhite}"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Width="200" Height="70" Margin="30" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata"/>
+                            <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata"/>
 
-                                <Grid BorderBrush="Black" BorderThickness="5" CornerRadius="15" Width="200" Height="200" Background="{StaticResource StandardWhite}">
-                                    <Image Width="150" Height="150" Source="/Assets/Pawns/RedPawn.png"/>
-                                </Grid>
-
-                                <Button Width="270" Height="75" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Margin="0,500,0,0" Click="StartaBtn_Click" Style="{StaticResource ButtonStyleFixWhite}" Foreground="{StaticResource StandardText}"/>
-                        </Grid>
-                    </StackPanel>                
+                            <Grid BorderBrush="Black" BorderThickness="5" CornerRadius="15" Width="200" Height="200" Background="{StaticResource StandardWhite}">
+                                <Image Width="150" Height="150" Source="/Assets/Pawns/RedPawn.png"/>
+                            </Grid>
+                            <Button Width="270" Height="75" Margin="30" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Click="StartaBtn_Click" Style="{StaticResource ButtonStyleFixWhite}" Foreground="{StaticResource StandardText}"/>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </Popup>
-            
+
         </Grid>
-    </StackPanel>
+    </Grid>
 </Page>

@@ -58,5 +58,10 @@ namespace FiaMedKnuff
         {            
             Frame.Navigate(typeof(GamePage));
         }
+
+        private void ParentGrid_SizeChanged(object sender, SizeChangedEventArgs e) {
+            NewGameOptionsGrid.Width = ParentGrid.ActualWidth;
+            NewGameOptionsGrid.Height = ParentGrid.ActualHeight;
+        }
     }
 }
