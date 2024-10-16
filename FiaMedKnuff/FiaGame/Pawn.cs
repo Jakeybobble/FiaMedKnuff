@@ -49,6 +49,13 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
+
+            if(GameManager.CurrentGame.Turn == 0) {
+                SpaceInPath = Team.Path.Count - 10;
+                Move(Team.Path[SpaceInPath]);
+                return;
+            } 
+
             if(CurrentTile.SpaceType == SpaceType.Home)
             {
                 if (GameManager.CurrentDieNumber == 1)
@@ -66,17 +73,23 @@ namespace FiaMedKnuff.FiaGame {
             }
             else
             {
-                Move(spaces);
+                Trace.WriteLine(Team.Path.Count);
+                if (SpaceInPath + spaces > Team.Path.Count - 1) {
+                    var count = Team.Path.Count - 1;
+                    SpaceInPath = count - (SpaceInPath + spaces) % count;
+                    Move(Team.Path[SpaceInPath]);
 
-                if(GameManager.CurrentDieNumber == 6)
-                {
-                    string text = "Du får rulla en gång till!";
+                    Trace.WriteLine("Looks like you rolled too high!");
+                } else {
+                    Move(spaces);
 
-                    GamePage.ChangeOutputTextBox(text);
+                    if (GameManager.CurrentDieNumber == 6) {
+                        string text = "Du får rulla en gång till!";
+
+                        GamePage.ChangeOutputTextBox(text);
+                    }
                 }
-
             }
-
         }
 
         public void Move(int spaces) {
