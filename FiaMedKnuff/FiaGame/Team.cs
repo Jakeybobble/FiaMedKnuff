@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FiaMedKnuff.FiaGame {
-    internal class Team {
+    public class Team {
 
         public TeamColor TeamColor = TeamColor.None;
 

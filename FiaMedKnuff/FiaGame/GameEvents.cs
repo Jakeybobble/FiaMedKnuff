@@ -17,6 +17,8 @@ namespace FiaMedKnuff.FiaGame {
         {
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
             {
+                if (tile.Stander == null) return;
+
                 if (GameManager.CurrentGame.CurrentTeam != tile.Stander.Team) return;
                 Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
 

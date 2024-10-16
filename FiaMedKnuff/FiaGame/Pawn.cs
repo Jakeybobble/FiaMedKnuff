@@ -54,12 +54,11 @@ namespace FiaMedKnuff.FiaGame {
                 if (GameManager.CurrentDieNumber == 1)
                 {
                     SpaceInPath = 0;
-                    Move(HappyPath[SpaceInPath]);
-                }
-                else if (GameManager.CurrentDieNumber == 6)
+                    Move(Team.Path[SpaceInPath]);
+                } else if (GameManager.CurrentDieNumber == 6)
                 {
                     SpaceInPath = spaces;
-                    Move(HappyPath[SpaceInPath]);
+                    Move(Team.Path[SpaceInPath]);
 
                     string text = "Du får rulla en gång till!";
                     GamePage.ChangeOutputTextBox(text);
@@ -67,8 +66,7 @@ namespace FiaMedKnuff.FiaGame {
             }
             else
             {
-                SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
-                Move(HappyPath[SpaceInPath]);
+                Move(spaces);
 
                 if(GameManager.CurrentDieNumber == 6)
                 {
@@ -86,22 +84,4 @@ namespace FiaMedKnuff.FiaGame {
             Move(Team.Path[SpaceInPath]);
             }
         }
-
-        // TODO: Have these be stored in each team instead
-        public static int startingSpace = 2;
-        public static int towardsCenterStart = 0;
-        public static List<Tile> HappyPath = new List<Tile>();
-        public static void GenerateHappyPath() {
-
-            for (int i = 0; i < Game.Spaces; i++) {
-                int space = (i + startingSpace) % Game.Spaces;
-                HappyPath.Add(GameManager.CurrentGame.Tiles[SpaceType.Surrounding][space]);
-            }
-            for (int i = 0; i < 4; i++) {
-                HappyPath.Add(GameManager.CurrentGame.Tiles[SpaceType.TowardsCenter][towardsCenterStart + i]);
-            }
-            HappyPath.Add(GameManager.CurrentGame.Tiles[SpaceType.Center][0]);
-        }
-
     }
-}
