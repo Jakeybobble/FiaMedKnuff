@@ -34,7 +34,7 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="state"></param>
         public void Refresh() {
-            TeamColor state = Stander?.Team ?? TeamColor.None;
+            TeamColor state = Stander?.TeamColor ?? TeamColor.None;
             switch (state) {
                 case TeamColor.None:
                     TileControl.ImageVisibility = Collapsed;

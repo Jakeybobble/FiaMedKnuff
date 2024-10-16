@@ -17,7 +17,8 @@ namespace FiaMedKnuff.FiaGame {
 
     public class Pawn {
 
-        public TeamColor Team;
+        public TeamColor TeamColor => Team.TeamColor;
+        public Team Team;
 
         public Tile CurrentTile;
         public int Space => CurrentTile.Space;
@@ -25,8 +26,9 @@ namespace FiaMedKnuff.FiaGame {
 
         public Pawn() { }
 
-        public Pawn(TeamColor team, Tile currentTile) {
+        public Pawn(Team team, Tile currentTile) {
             this.Team = team; this.CurrentTile = currentTile;
+            Trace.WriteLine("I've been put into this team.");
             currentTile.Stander = this;
         }
 
@@ -47,18 +49,16 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
-
             if(CurrentTile.SpaceType == SpaceType.Home)
             {
                 if (GameManager.CurrentDieNumber == 1)
                 {
                     SpaceInPath = 0;
-                    Move(HappyPath[SpaceInPath]);
-                }
-                else if (GameManager.CurrentDieNumber == 6)
+                    Move(Team.Path[SpaceInPath]);
+                } else if (GameManager.CurrentDieNumber == 6)
                 {
                     SpaceInPath = spaces;
-                    Move(HappyPath[SpaceInPath]);
+                    Move(Team.Path[SpaceInPath]);
 
                     string text = "Du får rulla en gång till!";
                     GamePage.ChangeOutputTextBox(text);
@@ -66,8 +66,7 @@ namespace FiaMedKnuff.FiaGame {
             }
             else
             {
-                SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, HappyPath.Count - 1);
-                Move(HappyPath[SpaceInPath]);
+                Move(spaces);
 
                 if(GameManager.CurrentDieNumber == 6)
                 {
@@ -77,23 +76,12 @@ namespace FiaMedKnuff.FiaGame {
                 }
 
             }
+
         }
 
-        // TODO: Have these be stored in each team instead
-        public static int startingSpace = 2;
-        public static int towardsCenterStart = 0;
-        public static List<Tile> HappyPath = new List<Tile>();
-        public static void GenerateHappyPath() {
-
-            for (int i = 0; i < Game.Spaces; i++) {
-                int space = (i + startingSpace) % Game.Spaces;
-                HappyPath.Add(GameManager.CurrentGame.Tiles[SpaceType.Surrounding][space]);
+        public void Move(int spaces) {
+            SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, Team.Path.Count - 1);
+            Move(Team.Path[SpaceInPath]);
             }
-            for (int i = 0; i < 4; i++) {
-                HappyPath.Add(GameManager.CurrentGame.Tiles[SpaceType.TowardsCenter][towardsCenterStart + i]);
-            }
-            HappyPath.Add(GameManager.CurrentGame.Tiles[SpaceType.Center][0]);
         }
-
     }
-}

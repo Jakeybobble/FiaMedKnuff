@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +17,11 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         public int Turn = 0;
 
-        public Team[] Teams = new Team[] {
-            new Team(TeamColor.Red, Team.TeamType.Player)
+        public List<Team> Teams = new List<Team> {
+            new Team(TeamColor.Red, Team.TeamType.Player, 2, 0),
+            new Team(TeamColor.Yellow, Team.TeamType.Bot, 12, 4),
+            new Team(TeamColor.Green, Team.TeamType.Bot, 22, 8),
+            new Team(TeamColor.Blue, Team.TeamType.Bot, 32, 12)
         };
         public int CurrentTeamIndex = 0;
         public Team CurrentTeam => Teams[CurrentTeamIndex];
@@ -49,17 +53,22 @@ namespace FiaMedKnuff.FiaGame {
 
             // Create each tile class so that a TileControl can register itself to it after loading
             var homeTiles = new Dictionary<int, Tile>();
-            TeamColor[] teams = { TeamColor.Red, TeamColor.Yellow, TeamColor.Green, TeamColor.Blue };
+            TeamColor[] teamColors = { TeamColor.Red, TeamColor.Yellow, TeamColor.Green, TeamColor.Blue };
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    var team = teams[i];
+                    var teamColor = teamColors[i];
                     var space = i * 4 + j;
 
                     // Create the tile...
                     var tile = new Tile(space);
                     homeTiles.Add(space, tile);
 
+                    // Create the pawn from the team
+
                     // ...Create the pawn
+                    var team = Teams[i] ?? null;
+                    Trace.WriteLine(team);
+                    if (team == null) continue;
                     var pawn = new Pawn(team, tile);
                 }
                 
@@ -80,9 +89,24 @@ namespace FiaMedKnuff.FiaGame {
 
             Tiles.Add(SpaceType.Center, new Dictionary<int, Tile> { { 0, new Tile(0) } });
 
-            // Generate a path for the pawn to move on... TODO: Do this for each team instead
-            Pawn.GenerateHappyPath();
+            PostRegister();
             
+        }
+
+        /// <summary>
+        /// Runs once RegisterTiles() has finished
+        /// </summary>
+        private void PostRegister() {
+            // Generate each team path
+            foreach(Team team in Teams) {
+                team?.GeneratePath();
+            }
+        }
+
+        public void EndTurn() {
+            CurrentGameState = GameState.PreRoll;
+            Turn++;
+            CurrentTeamIndex = (CurrentTeamIndex + 1) % Teams.Count;
         }
 
     }
