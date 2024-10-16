@@ -97,7 +97,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid BorderThickness="5" BorderBrush="Black" Grid.Column="0" CornerRadius="5" Background="White" Margin="10">
                     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">                       
-                        <TextBlock x:Name="DieTextBlock" Foreground="{StaticResource StandardText}" TextWrapping="Wrap" Text="Press the die button" FontSize="30" FontFamily="Inconsolata"/>
+                        <TextBlock x:Name="DieTextBlock" Foreground="{StaticResource StandardText}" TextWrapping="Wrap" Text="Tryck på tärningen" FontSize="30" FontFamily="Inconsolata"/>
                     </Grid>
                 </Grid>
                 <!-- Die -->
@@ -322,7 +322,7 @@
                         </Grid>
 
 
-                        <Button Width="270" Height="75" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Margin="0,500,0,0" Click="StartaBtn_Click" />
+                    <Button Width="270" Height="75" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Margin="0,500,0,0" Click="StartaBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}" Foreground="{StaticResource StandardText}"/>
                     </Grid>                
             </Grid>
         </Popup>
@@ -344,8 +344,8 @@
                         <TextBlock Name="DieDecisionText" Width="950" Text="Vill du flytta din pjäs till cirkel 1 eller cirkel 6?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" FontFamily="Inconsolata" Margin="10,0,0,0"/>
                         
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Name="Position1Option" Width="270" Height="75" Content="Cirkel 1" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,100,50" Click="Position1Option_Click"/>
-                            <Button Name="Position6Option" Width="270" Height="75" Content="Cirkel 6" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" Click="Position6Option_Click"/>
+                        <Button Name="Position1Option" Width="270" Height="75" Content="Cirkel 1" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,100,50" Click="Position1Option_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}" Foreground="{StaticResource StandardText}"/>
+                            <Button Name="Position6Option" Width="270" Height="75" Content="Cirkel 6" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,50" Click="Position6Option_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}" Foreground="{StaticResource StandardText}"/>
                         </StackPanel>                              
                     </Grid>                
             </Grid>
