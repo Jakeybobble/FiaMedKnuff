@@ -56,9 +56,7 @@ namespace FiaMedKnuff {
             tile.TileControl = this;
             this.tile = tile;
 
-            //tile.Update(tile.State);
             tile.Refresh();
-            //Trace.WriteLine(tile.State);
 
         }
 
