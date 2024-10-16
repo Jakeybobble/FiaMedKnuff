@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using static Windows.UI.Xaml.Visibility;
 
 namespace FiaMedKnuff.FiaGame {
-    internal class Tile {
+    public class Tile {
 
         public TileControl TileControl;
 

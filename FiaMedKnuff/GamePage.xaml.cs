@@ -23,13 +23,22 @@ namespace FiaMedKnuff {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class GamePage : Page {
+        
         public GamePage() {
             this.InitializeComponent();
+            changeOutputText = DieTextBlock;
+            dieDecisionPopup = DieResultDecisionPopup;
+            position1Btn = Position1Option;
         }
 
+        public static TextBlock changeOutputText;
+        public static Popup dieDecisionPopup;
+        public static Button position1Btn;
+        public static Pawn stander;
+
+
         private void DieButton_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {            
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PreRoll)
             {
                 int dieThrow= GameEvents.OnDieClicked();
@@ -50,8 +59,7 @@ namespace FiaMedKnuff {
             else if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
             {
                 DieTextBlock.Text = $"Det är inte din tur.";                
-            }        
-               
+            }      
         }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
@@ -64,6 +72,9 @@ namespace FiaMedKnuff {
             NewGameOptionsPopup.IsOpen = true;
         }
 
+        /// <summary>
+        ///  Closes all PopUps in the GamePage view when CloseBtn is clicked, or an option to move was chosen.
+        /// </summary>      
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             if (sender == NewGameCloseBtn)
@@ -73,11 +84,17 @@ namespace FiaMedKnuff {
             else if (sender == RulesCloseBtn)
             {
                 RulesPopup.IsOpen = false;
-            }          
-           
+            }           
+            else if (sender == Position1Option || sender == Position6Option)
+            {
+                DieResultDecisionPopup.IsOpen = false;
+            }
+
         }
 
-        // When user clicks outside of the Popup, it is closed.
+        /// <summary>
+        /// When user clicks outside of the Popup, it is closed.
+        /// </summary>
         private void PopupOutside_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (sender == NewGameOptionsPopupGrid)
@@ -87,16 +104,23 @@ namespace FiaMedKnuff {
             else if (sender == RulesPopupGrid)
             {
                 RulesPopup.IsOpen = false;
-            }            
+            }
         }
 
-        // When user clicks inside of the Popup, it stays open. Unless the Closebtn was pressed.  
+        /// <summary>
+        /// When user clicks inside of the Popup, it stays open. Unless the Closebtn was pressed.  
+        /// </summary>
         private void PopupInside_Tapped(object sender, TappedRoutedEventArgs e)
         {           
             e.Handled = true;     
         }
 
-        // Clicking "Starta" clears the gameboard, and starts a new game.
+
+        /// <summary>
+        /// Clicking "Starta" navigates the user to the gameboard, and starts a new game.
+        /// </summary>
+        /// <param name="sender">Starta button</param>
+
         private void StartaBtn_Click(object sender, RoutedEventArgs e)
         {            
             GameManager.Init();
@@ -129,6 +153,45 @@ namespace FiaMedKnuff {
             
             RulesPopup.IsOpen = true;
         }
-              
+
+        /// <summary>
+        /// Makes it possible to change the DieTextBlock across the project. 
+        /// </summary>
+        /// <param name="text"> Sets the content of DieTextBlock</param>
+
+        public static void ChangeOutputTextBox(string text)
+        {
+            GamePage.changeOutputText.Text = text;
+        }
+
+        /// <summary>
+        /// Makes it possible to open the Popup across the project.
+        /// </summary>
+        public static void DieDecisionPopUp()
+        {
+            GamePage.dieDecisionPopup.IsOpen = true;
+        }
+
+        
+        /// <summary>
+        /// When user rolls a 6 on the die, they are presented with the option to move pawn to position 1 or 6.
+        /// </summary>
+        /// <param name="sender"> The Button for moving to cirkle 1 was clicked.</param>
+        
+        private void Position1Option_Click(object sender, RoutedEventArgs e)
+        {
+            stander.MoveInPath(0);
+            CloseBtn_Click(sender, e);
+        }
+
+        /// <summary>
+        /// When user rolls a 6 on the die, they are presented with the option to move pawn to position 1 or 6.
+        /// </summary>
+        /// <param name="sender"> The Button for moving to cirkle 6 was clicked.</param>
+        private void Position6Option_Click(object sender, RoutedEventArgs e)
+        {
+            stander.MoveInPath(5);
+            CloseBtn_Click(sender, e);
+        }
     }
 }
