@@ -20,14 +20,18 @@ namespace FiaMedKnuff.FiaGame {
         public int Turn = 0;
 
         public List<Team> Teams = new List<Team> {
-            new Team(TeamColor.Red, Team.TeamType.Player, 2, 0),
-            new Team(TeamColor.Yellow, Team.TeamType.Bot, 12, 4),
-            new Team(TeamColor.Green, Team.TeamType.Bot, 22, 8),
-            new Team(TeamColor.Blue, Team.TeamType.Bot, 32, 12)
+            new Team(TeamColor.Red, Team.TeamType.Player, 2, 0, "Rött lag"),
+            new Team(TeamColor.Yellow, Team.TeamType.Bot, 12, 4, "Gult lag"),
+            new Team(TeamColor.Green, Team.TeamType.Bot, 22, 8, "Grönt lag"),
+            new Team(TeamColor.Blue, Team.TeamType.Bot, 32, 12, "Blått lag")
         };
         public int CurrentTeamIndex = 0;
         public Team CurrentTeam => Teams[CurrentTeamIndex];
 
+
+        /// <summary>
+        /// Makes sure the game starts in the PreRoll state.
+        /// </summary>
         public GameState CurrentGameState = GameState.PreRoll;
                
         public enum GameState {
@@ -110,8 +114,8 @@ namespace FiaMedKnuff.FiaGame {
 
         public void StartTurn()
         {
+            GamePage.ChangeOutputTextBox("Det är " + CurrentTeam.Name + "s tur att rulla tärningen!");
             CurrentGameState = GameState.PreRoll;
-            CurrentTeamIndex = (CurrentTeamIndex + 1) % Teams.Count;
 
             var border = GetTurnIndicator(CurrentTeam.TeamColor);
             border.BorderBrush = (SolidColorBrush)App.Current.Resources["RedTeam"];
@@ -122,7 +126,9 @@ namespace FiaMedKnuff.FiaGame {
             var border = GetTurnIndicator(CurrentTeam.TeamColor);
             border.BorderBrush = (SolidColorBrush)App.Current.Resources["StandardWhite"];
 
+            CurrentTeamIndex = (CurrentTeamIndex + 1) % Teams.Count;
             Turn++;
+            GamePage.ChangeOutputTextBox("");
             StartTurn();
         }
 
@@ -142,9 +148,6 @@ namespace FiaMedKnuff.FiaGame {
             } return null;
 
         }
-
-       
-
     }
 
     public enum SpaceType {

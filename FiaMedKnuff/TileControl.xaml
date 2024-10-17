@@ -28,8 +28,7 @@
                 <Border BorderBrush="#F990FF" BorderThickness="15" CornerRadius="150" Opacity="0.5">
                 </Border>
             </Grid>
-            <Image Source="{x:Bind ImageSource, Mode=OneWay}"
-Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
+            <Image Source="{x:Bind ImageSource, Mode=OneWay}" Visibility="{x:Bind ImageVisibility, Mode=OneWay}"/>
             <Image Source="{x:Bind HighlightImageSource, Mode=OneWay}" Opacity="{x:Bind HighlightImageOpacity, Mode=OneWay}"/>
         </Grid>
         

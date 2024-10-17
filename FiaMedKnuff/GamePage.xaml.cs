@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using static System.Net.WebRequestMethods;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -51,24 +52,39 @@ namespace FiaMedKnuff {
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PreRoll)
             {
                 int dieThrow= GameEvents.OnDieClicked();
-               
-                DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
 
-                ImageBrush img = new ImageBrush();
-                img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
+                if (GameManager.CurrentDieNumber == 6)
+                {
+                    dieThrow = GameEvents.OnDieClicked();
+                    DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
 
-                DieButton.Background = img;
+                   
+                    ImageBrush img = new ImageBrush();
+                    img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
 
-                GameManager.CurrentDieNumber = dieThrow;                                
-                TileControl.Selectable = true;
+                    DieButton.Background = img;
 
-                GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+                    GameManager.CurrentDieNumber = dieThrow;
+                    TileControl.Selectable = true;
+                    GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+                }  
+                else if(GameManager.CurrentDieNumber != 6)
+                {
+                    dieThrow = GameEvents.OnDieClicked();
+                    DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
 
-            }
-            else if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
-            {
-                DieTextBlock.Text = $"Det är inte din tur.";                
-            }      
+
+                    ImageBrush img = new ImageBrush();
+                    img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
+
+                    DieButton.Background = img;
+
+                    GameManager.CurrentDieNumber = dieThrow;
+                    TileControl.Selectable = true;
+
+                    GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+                }            
+            }             
         }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
@@ -191,6 +207,7 @@ namespace FiaMedKnuff {
         {
             stander.MoveInPath(0);
             CloseBtn_Click(sender, e);
+            GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
         }
 
         /// <summary>
@@ -201,6 +218,7 @@ namespace FiaMedKnuff {
         {
             stander.MoveInPath(5);
             CloseBtn_Click(sender, e);
+            GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
         }
     }
 }

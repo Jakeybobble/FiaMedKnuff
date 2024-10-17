@@ -19,15 +19,23 @@ namespace FiaMedKnuff.FiaGame {
             {
                 if (tile.Stander == null) return;
 
-                // TODO: Uncomment for team lock
-                //if (GameManager.CurrentGame.CurrentTeam != tile.Stander.Team) return;
+                // TODO: Comment/Uncomment for team lock
+                if (GameManager.CurrentGame.CurrentTeam != tile.Stander.Team) return;
                 Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
 
                 if(GameManager.CurrentDieNumber == 6 && tile.Stander.CurrentTile.SpaceType == SpaceType.Home)
                 {
                     GamePage.stander = tile.Stander;
                     GamePage.dieDecisionPopup.IsOpen = true;
-                    //GameManager.CurrentGame.StartTurn();
+                   
+                }
+                else if (GameManager.CurrentDieNumber == 6 && tile.Stander.CurrentTile.SpaceType != SpaceType.Home)
+                {
+                    GamePage.stander = tile.Stander;
+                    tile.Stander?.MoveInPath(GameManager.CurrentDieNumber);
+                    TileControl.Selectable = false;
+                    GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
+                   
                 }
                 else
                 {
@@ -35,14 +43,11 @@ namespace FiaMedKnuff.FiaGame {
                     GameManager.CurrentGame.EndTurn();
                     TileControl.Selectable = false;
                 }
-
-               // GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
-                
             }           
         }
 
         public static int OnDieClicked() {
-            
+
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
 

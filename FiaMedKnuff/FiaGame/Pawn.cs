@@ -70,7 +70,7 @@ namespace FiaMedKnuff.FiaGame {
                     SetTile(spaces);
 
                     string text = "Du får rulla en gång till!";
-                    GamePage.ChangeOutputTextBox(text);
+                    GamePage.ChangeOutputTextBox(text);                  
                 }
             }
             else

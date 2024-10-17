@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace FiaMedKnuff.FiaGame {
     public class Team {
 
+        public string Name { get; set; }
+
         public TeamColor TeamColor = TeamColor.None;
 
         public enum TeamType {
@@ -35,8 +37,8 @@ namespace FiaMedKnuff.FiaGame {
             TeamColor = color; Type = type;
         }
 
-        public Team(TeamColor color, TeamType type, int startingSpace, int towardsCenterStartingSpace) {
-            TeamColor = color; Type = type; StartingSpace = startingSpace; TowardsCenterStartingSpace = towardsCenterStartingSpace;
+        public Team(TeamColor color, TeamType type, int startingSpace, int towardsCenterStartingSpace, string name) {
+            TeamColor = color; Type = type; StartingSpace = startingSpace; TowardsCenterStartingSpace = towardsCenterStartingSpace; Name = name;
         }
 
         /// <summary>
