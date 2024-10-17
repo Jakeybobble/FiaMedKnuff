@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Media;
 
 namespace FiaMedKnuff.FiaGame {
     internal static class GameEvents
@@ -46,12 +48,31 @@ namespace FiaMedKnuff.FiaGame {
             }           
         }
 
-        public static int OnDieClicked() {
+        public static void OnDieClicked() {
 
+            // Return if state is PostRoll
+            if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll) {
+                GamePage.changeOutputText.Text = "Det är inte din tur.";
+                return;
+            }
+
+            // Roll and set die number
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
 
-            return dieThrow;
+            GameManager.CurrentDieNumber = dieThrow;
+
+            // Set the image of the die
+            GamePage.changeOutputText.Text = $"Du rullade en {dieThrow}:a!";
+            ImageBrush img = new ImageBrush();
+            img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
+            GamePage.TheDieButton.Background = img;
+
+            // Set all to be selectable and change to PostRoll
+            TileControl.Selectable = true;
+            GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+
+
         }
     }
 }

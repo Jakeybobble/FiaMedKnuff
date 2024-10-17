@@ -35,12 +35,14 @@ namespace FiaMedKnuff {
             yellowTurnIndicator = YellowBorder;
             greenTurnIndicator = GreenBorder;
             blueTurnIndicator = BlueBorder;
+            TheDieButton = DieButton;
         }
 
         public static TextBlock changeOutputText;
         public static Popup dieDecisionPopup;
         public static Button position1Btn;
         public static Pawn stander;
+        public static Button TheDieButton;
 
         public static Border redTurnIndicator;
         public static Border yellowTurnIndicator;
@@ -48,43 +50,8 @@ namespace FiaMedKnuff {
         public static Border blueTurnIndicator;
 
         private void DieButton_Click(object sender, RoutedEventArgs e)
-        {            
-            if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PreRoll)
-            {
-                int dieThrow= GameEvents.OnDieClicked();
-
-                if (GameManager.CurrentDieNumber == 6)
-                {
-                    dieThrow = GameEvents.OnDieClicked();
-                    DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
-
-                   
-                    ImageBrush img = new ImageBrush();
-                    img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
-
-                    DieButton.Background = img;
-
-                    GameManager.CurrentDieNumber = dieThrow;
-                    TileControl.Selectable = true;
-                    GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
-                }  
-                else if(GameManager.CurrentDieNumber != 6)
-                {
-                    dieThrow = GameEvents.OnDieClicked();
-                    DieTextBlock.Text = $"Du rullade en {dieThrow}:a!";
-
-
-                    ImageBrush img = new ImageBrush();
-                    img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
-
-                    DieButton.Background = img;
-
-                    GameManager.CurrentDieNumber = dieThrow;
-                    TileControl.Selectable = true;
-
-                    GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
-                }            
-            }             
+        {
+            GameEvents.OnDieClicked();          
         }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
