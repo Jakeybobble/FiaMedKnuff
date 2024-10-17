@@ -109,16 +109,34 @@ namespace FiaMedKnuff.FiaGame {
                 team?.GeneratePath();
             }
 
-            StartTurn();         
+            RandomizeFirstTurn();        
+        }
+        /// <summary>
+        /// This runs only in the beginning of the game to decide which color goes first in the turnorder. 
+        /// </summary>        
+        public void RandomizeFirstTurn()
+        {
+            Random random = new Random();
+            int startingTeamIndex = random.Next(0, 3);
+
+            Trace.WriteLine($"Starting index: " + startingTeamIndex);
+
+            GamePage.ChangeOutputTextBox($"Det är " + Teams[startingTeamIndex].Name + "s tur att rulla tärningen!");
+            CurrentGameState = GameState.PreRoll;
+
+            var border = GetTurnIndicator(Teams[startingTeamIndex].TeamColor);
+            border.BorderBrush = (SolidColorBrush)App.Current.Resources[$"Color{startingTeamIndex}"];
+
+            EndTurn();
         }
 
         public void StartTurn()
         {
-            GamePage.ChangeOutputTextBox("Det är " + CurrentTeam.Name + "s tur att rulla tärningen!");
+            GamePage.ChangeOutputTextBox($"Det är " + CurrentTeam.Name + "s tur att rulla tärningen!");
             CurrentGameState = GameState.PreRoll;
 
             var border = GetTurnIndicator(CurrentTeam.TeamColor);
-            border.BorderBrush = (SolidColorBrush)App.Current.Resources["RedTeam"];
+            border.BorderBrush = (SolidColorBrush)App.Current.Resources["RedTeam"]; // TBD Change the color to the currentTeams color!
         }
 
         public void EndTurn() {

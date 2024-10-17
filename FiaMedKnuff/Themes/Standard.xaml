@@ -12,6 +12,12 @@
     <SolidColorBrush Color="#1C49DF" x:Key="BlueTeam"/>
     <SolidColorBrush Color="#FFD900" x:Key="YellowTeam"/>
 
+    <!--These colors are for setting the TurnIndicator. -->
+    <SolidColorBrush Color="#DC2020" x:Key="Color1"/>
+    <SolidColorBrush Color="#2EBA0C" x:Key="Color2"/>
+    <SolidColorBrush Color="#1C49DF" x:Key="Color3"/>
+    <SolidColorBrush Color="#FFD900" x:Key="Color4"/>
+
     <SolidColorBrush Color="#FFFFFF" x:Key="StandardTile"/>
 
     <SolidColorBrush Color="#FFA11D" x:Key="OrangeButton"/>
