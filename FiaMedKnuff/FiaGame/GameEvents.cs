@@ -27,15 +27,17 @@ namespace FiaMedKnuff.FiaGame {
                 {
                     GamePage.stander = tile.Stander;
                     GamePage.dieDecisionPopup.IsOpen = true;
+                    //GameManager.CurrentGame.StartTurn();
                 }
                 else
                 {
                     tile.Stander?.MoveInPath(GameManager.CurrentDieNumber); // Move the pawn if it exists
+                    GameManager.CurrentGame.EndTurn();
+                    TileControl.Selectable = false;
                 }
 
-                GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
-                TileControl.Selectable = false;
-                GameManager.CurrentGame.EndTurn();
+               // GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
+                
             }           
         }
 

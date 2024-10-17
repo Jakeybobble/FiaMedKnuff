@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
 namespace FiaMedKnuff.FiaGame {
 
@@ -80,7 +83,11 @@ namespace FiaMedKnuff.FiaGame {
 
                 } else {
                     Move(spaces);
-
+                    if(CurrentTile.SpaceType == SpaceType.Center)
+                    {
+                        Frame navigationFrame = Window.Current.Content as Frame;
+                        navigationFrame.Navigate(typeof(ResultatPage));
+                    }
                     if (GameManager.CurrentDieNumber == 6) {
                         string text = "Du får rulla en gång till!";
 
