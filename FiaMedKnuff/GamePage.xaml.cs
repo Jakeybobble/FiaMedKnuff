@@ -35,14 +35,12 @@ namespace FiaMedKnuff {
             yellowTurnIndicator = YellowBorder;
             greenTurnIndicator = GreenBorder;
             blueTurnIndicator = BlueBorder;
-            TheDieButton = DieButton;
         }
 
         public static TextBlock changeOutputText;
         public static Popup dieDecisionPopup;
         public static Button position1Btn;
         public static Pawn stander;
-        public static Button TheDieButton;
 
         public static Border redTurnIndicator;
         public static Border yellowTurnIndicator;
@@ -51,7 +49,16 @@ namespace FiaMedKnuff {
 
         private void DieButton_Click(object sender, RoutedEventArgs e)
         {
-            GameEvents.OnDieClicked();          
+            int dieThrow = GameEvents.OnDieClicked();
+
+            if (dieThrow != -1) {
+                // Set the image of the die
+                GamePage.changeOutputText.Text = $"Du rullade en {dieThrow}:a!";
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
+                DieButton.Background = img;
+            }
+
         }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)

@@ -48,12 +48,12 @@ namespace FiaMedKnuff.FiaGame {
             }           
         }
 
-        public static void OnDieClicked() {
+        public static int OnDieClicked() {
 
             // Return if state is PostRoll
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll) {
                 GamePage.changeOutputText.Text = "Det är inte din tur.";
-                return;
+                return -1;
             }
 
             // Roll and set die number
@@ -62,15 +62,10 @@ namespace FiaMedKnuff.FiaGame {
 
             GameManager.CurrentDieNumber = dieThrow;
 
-            // Set the image of the die
-            GamePage.changeOutputText.Text = $"Du rullade en {dieThrow}:a!";
-            ImageBrush img = new ImageBrush();
-            img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
-            GamePage.TheDieButton.Background = img;
-
             // Set all to be selectable and change to PostRoll
             TileControl.Selectable = true;
             GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+            return dieThrow;
 
 
         }
