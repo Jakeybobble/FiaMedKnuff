@@ -79,6 +79,7 @@ namespace FiaMedKnuff.FiaGame {
             {
 
                 if (SpaceInPath + spaces > Team.Path.Count - 1) { // Move back if roll is too high
+                    // TODO: Make pawn go to first empty spot + not shove teammates
                     var count = Team.Path.Count - 1;
                     var newSpace = count - (SpaceInPath + spaces) % count;
                     SetTile(newSpace);
@@ -119,11 +120,7 @@ namespace FiaMedKnuff.FiaGame {
                 tile = Team.Path[SpaceInPath];
 
             }
-            //SpaceInPath = Math.Clamp(SpaceInPath + spaces, 0, Team.Path.Count - 1);
-
             SetTile(tile);
-
-            // TODO: Foreach tile in the way
             }
 
         /// <summary>
