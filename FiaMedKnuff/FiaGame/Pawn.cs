@@ -35,11 +35,14 @@ namespace FiaMedKnuff.FiaGame {
         }
 
         /// <summary>
-        /// Set self to stand at set Tile
+        /// Set self to stand at set Tile, and shove if a pawn is in the way
         /// </summary>
         /// <param name="to">Tile to set position to</param>
         public void SetTile(Tile to) {
             Tile from = CurrentTile;
+            if (to.Stander != null) {
+                to.Stander.Shove();
+            }
             from.Stander = null; to.Stander = this;
             CurrentTile = to;
             from.Refresh(); to.Refresh();
@@ -59,7 +62,6 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
-
             if(CurrentTile.SpaceType == SpaceType.Home)
             {
                 if (GameManager.CurrentDieNumber == 1)
@@ -128,7 +130,14 @@ namespace FiaMedKnuff.FiaGame {
         /// Shoves this pawn back home
         /// </summary>
         public void Shove() {
-
+            var homeSpace = Team.TowardsCenterStartingSpace; // Funnily enough, this should be the same number.
+            for(int i = 0; i < 4; i++) {
+                Tile tile = GameManager.CurrentGame.Tiles[SpaceType.Home][i + homeSpace];
+                if (tile.Stander == null) {
+                    SetTile(tile);
+                    break;
+                }
+            }
         }
-        }
-    }
+     }
+}
