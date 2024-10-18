@@ -171,7 +171,7 @@
                                 
             </Grid>
 
-            <Popup Name="NewGameOptionsPopup" IsOpen="True" IsLightDismissEnabled="False">
+            <Popup Name="NewGameOptionsPopup" IsOpen="False" IsLightDismissEnabled="True">
                 <Grid Background="#80000000" Tapped="PopupOutside_Tapped"
                       x:Name="NewGameOptionsGrid">
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Tapped="PopupInside_Tapped" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5">

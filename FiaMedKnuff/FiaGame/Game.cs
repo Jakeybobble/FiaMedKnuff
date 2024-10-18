@@ -59,7 +59,7 @@ namespace FiaMedKnuff.FiaGame {
 
             // Create each tile class so that a TileControl can register itself to it after loading
             var homeTiles = new Dictionary<int, Tile>();
-            TeamColor[] teamColors = { TeamColor.Red, TeamColor.Yellow, TeamColor.Green, TeamColor.Blue };
+            TeamColor[] teamColors = { TeamColor.Red, TeamColor.Yellow, TeamColor.Green, TeamColor.Blue  };
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
                     var teamColor = teamColors[i];
@@ -109,22 +109,33 @@ namespace FiaMedKnuff.FiaGame {
                 team?.GeneratePath();
             }
 
-            StartTurn();         
+            RandomizeFirstTurn();
+            StartTurn();
+        }
+        /// <summary>
+        /// This runs only in the beginning of the game to decide which team goes first in the turnorder. 
+        /// </summary>        
+        public void RandomizeFirstTurn()
+        {
+            Random random = new Random();
+            int startingTeamIndex = random.Next(Teams.Count);
+
+            CurrentTeamIndex = startingTeamIndex;
         }
 
         public void StartTurn()
         {
-            GamePage.ChangeOutputTextBox("Det är " + CurrentTeam.Name + "s tur att rulla tärningen!");
+            GamePage.ChangeOutputTextBox($"Det är " + CurrentTeam.Name + "s tur att rulla tärningen!");
             CurrentGameState = GameState.PreRoll;
 
-            var border = GetTurnIndicator(CurrentTeam.TeamColor);
-            border.BorderBrush = (SolidColorBrush)App.Current.Resources["RedTeam"];
+            var border = GetTeamColorBorder(CurrentTeam.TeamColor);
+            border.BorderBrush = (SolidColorBrush)App.Current.Resources[GetTeamColorString(CurrentTeam.TeamColor)];
         }
 
         public void EndTurn() {
 
-            var border = GetTurnIndicator(CurrentTeam.TeamColor);
-            border.BorderBrush = (SolidColorBrush)App.Current.Resources["StandardWhite"];
+            var border = GetTeamColorBorder(CurrentTeam.TeamColor);
+            border.BorderBrush = (SolidColorBrush)App.Current.Resources["StandardTile"];
 
             CurrentTeamIndex = (CurrentTeamIndex + 1) % Teams.Count;
             Turn++;
@@ -132,20 +143,38 @@ namespace FiaMedKnuff.FiaGame {
             StartTurn();
         }
 
-        public static Border GetTurnIndicator(TeamColor color)
+        public static Border GetTeamColorBorder(TeamColor color)
         {
             switch (color)
             {
                 case TeamColor.Red:
                     return GamePage.redTurnIndicator;
+                case TeamColor.Yellow:
+                    return GamePage.yellowTurnIndicator;
                 case TeamColor.Green:
                     return GamePage.greenTurnIndicator;
                 case TeamColor.Blue:
                     return GamePage.blueTurnIndicator;
-                case TeamColor.Yellow:
-                    return GamePage.yellowTurnIndicator;
 
             } return null;
+
+        }
+
+        public static string GetTeamColorString(TeamColor color)
+        {
+            switch (color)
+            {
+                case TeamColor.Red:
+                    return "RedTeam";
+                case TeamColor.Yellow:
+                    return "YellowTeam";
+                case TeamColor.Green:
+                    return "GreenTeam";
+                case TeamColor.Blue:
+                    return "BlueTeam";
+
+            }
+            return null;
 
         }
     }

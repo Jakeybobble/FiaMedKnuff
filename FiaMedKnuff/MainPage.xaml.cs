@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FiaMedKnuff.FiaGame;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace FiaMedKnuff
         public MainPage()
         {
             this.InitializeComponent();
+
         }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
@@ -55,7 +57,7 @@ namespace FiaMedKnuff
 
         // Clicking "Starta" navigates the user to the gameboard.
         private void StartaBtn_Click(object sender, RoutedEventArgs e)
-        {            
+        {                       
             Frame.Navigate(typeof(GamePage));
         }
 
