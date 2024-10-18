@@ -16,6 +16,8 @@ namespace FiaMedKnuff.FiaGame {
         }
         public TeamType Type = TeamType.Bot;
 
+        public List<Pawn> Pawns = new List<Pawn>();
+
         /// <summary>
         /// The ID of the space each pawn in the team starts on
         /// </summary>
