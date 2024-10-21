@@ -68,7 +68,8 @@ namespace FiaMedKnuff {
 
         private void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
         {
-            NewGameOptionsPopup.IsOpen = true;
+            
+            animateDirectionDown.Begin();
         }
 
         /// <summary>
@@ -76,44 +77,21 @@ namespace FiaMedKnuff {
         /// </summary>      
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (sender == NewGameCloseBtn)
-            {
-                NewGameOptionsPopup.IsOpen = false;
-            }
-            else if (sender == RulesCloseBtn)
-            {
-                RulesPopup.IsOpen = false;
-            }           
-            else if (sender == Position1Option || sender == Position6Option)
-            {
-                DieResultDecisionPopup.IsOpen = false;
-            }
+            animateUpAndOut.Begin();
+            //if (sender == NewGameCloseBtn)
+            //{
+            //    //NewGameOptionsPopup.IsOpen = false;
+            //}
+            //else if (sender == RulesCloseBtn)
+            //{
+            //    RulesPopup.IsOpen = false;
+            //}           
+            //else if (sender == Position1Option || sender == Position6Option)
+            //{
+            //    DieResultDecisionPopup.IsOpen = false;
+            //}
 
         }
-
-        /// <summary>
-        /// When user clicks outside of the Popup, it is closed.
-        /// </summary>
-        private void PopupOutside_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            if (sender == NewGameOptionsPopupGrid)
-            {
-                NewGameOptionsPopup.IsOpen = false;
-            }
-            else if (sender == RulesPopupGrid)
-            {
-                RulesPopup.IsOpen = false;
-            }
-        }
-
-        /// <summary>
-        /// When user clicks inside of the Popup, it stays open. Unless the Closebtn was pressed.  
-        /// </summary>
-        private void PopupInside_Tapped(object sender, TappedRoutedEventArgs e)
-        {           
-            e.Handled = true;     
-        }
-
 
         /// <summary>
         /// Clicking "Starta" navigates the user to the gameboard, and starts a new game.
@@ -193,6 +171,12 @@ namespace FiaMedKnuff {
             stander.MoveInPath(5);
             CloseBtn_Click(sender, e);
             GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
+        }
+
+        private void ParentGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            NewGameDialog.Width = ParentGrid.ActualWidth;
+            NewGameDialog.Height = ParentGrid.ActualHeight;
         }
     }
 }
