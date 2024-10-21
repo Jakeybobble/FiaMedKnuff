@@ -73,6 +73,13 @@
                 <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1036"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Name="animateUpAndOutRules">
+            <DoubleAnimation Duration="00:00:00" Storyboard.TargetName="RulesPopup" To="5" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="RulesPopup" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1045"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="-5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
 
     <Grid x:Name="ParentGrid" SizeChanged="ParentGrid_SizeChanged">

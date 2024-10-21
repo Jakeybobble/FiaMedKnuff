@@ -52,7 +52,7 @@ namespace FiaMedKnuff {
             int dieThrow = GameEvents.OnDieClicked();
 
             if (dieThrow != -1) {
-                // Set the image of the die
+                // Sets the image of the die to match the result rolled.
                 GamePage.changeOutputText.Text = $"Du rullade en {dieThrow}:a!";
                 ImageBrush img = new ImageBrush();
                 img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
@@ -67,28 +67,27 @@ namespace FiaMedKnuff {
         }
 
         private void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {            
             animateDirectionDown.Begin();
         }
 
         /// <summary>
-        ///  Closes all PopUps in the GamePage view when CloseBtn is clicked, or an option to move was chosen.
+        ///  Closes all PopUps in the GamePage view when CloseBtn is clicked, or an option was clicked in DieResultDecision.
         /// </summary>      
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             if (sender == NewGameCloseBtn)
             {
-                 animateUpAndOut.Begin();
+                animateUpAndOut.Begin();
             }
             else if (sender == RulesCloseBtn)
             {
-                //RulesPopup.IsOpen = false;
+                animateUpAndOutRules.Begin();
             }
-            //else if (sender == Position1Option || sender == Position6Option)
-            //{
-            //    DieResultDecisionPopup.IsOpen = false;
-            //}
+            else if (sender == Position1Option || sender == Position6Option)
+            {
+                DieResultDecisionPopup.IsOpen = false;
+            }
 
         }
 
@@ -96,7 +95,6 @@ namespace FiaMedKnuff {
         /// Clicking "Starta" navigates the user to the gameboard, and starts a new game.
         /// </summary>
         /// <param name="sender">Starta button</param>
-
         private void StartaBtn_Click(object sender, RoutedEventArgs e)
         {            
             GameManager.Init();
@@ -125,8 +123,7 @@ namespace FiaMedKnuff {
                 "tärningskast matcha antalet steg in till mittcirkeln. Visar tärningen för många \r\n" +
                 "steg måste spelaren gå tillbaka överskjutande antal steg.\r\n\n" +
                 "Den spelare som går ut med alla sina pjäser först vinner.\r\n";
-            
-            //RulesPopup.IsOpen = true;
+                        
             animateDownRules.Begin();
         }
 
@@ -172,6 +169,9 @@ namespace FiaMedKnuff {
             GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
         }
 
+        /// <summary>
+        /// Makes sure the window fits the current screen being used.
+        /// </summary>
         private void ParentGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             NewGameDialog.Width = ParentGrid.ActualWidth;
