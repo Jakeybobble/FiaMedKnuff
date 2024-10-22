@@ -127,8 +127,9 @@
                         </Grid>
                     </Grid>
                     <!-- Die -->
-                    <Grid Grid.Column="1" Width="60" Height="60" Background="Transparent" Margin="10">
-                        <Button Style="{StaticResource ButtonStyleDie}" x:Name="DieButton" Content="" Width="50" Height="50" Margin="0,0,0,0" Click="DieButton_Click">
+                    <Grid Grid.Column="1" Width="70" Height="70" Background="Transparent">
+                        <Border x:Name="dieBtnBorder" BorderThickness="4" BorderBrush="Yellow" Background="White" Width="60" Height="60" CornerRadius="10" HorizontalAlignment="Center"/>
+                        <Button Style="{StaticResource ButtonStyleDie}" x:Name="DieButton" HorizontalAlignment="Center" Content="" Width="50" Height="50" Click="DieButton_Click">
                             <Button.Background>
                                 <ImageBrush ImageSource="/Assets/Die/Die1.png"/>
                             </Button.Background>
