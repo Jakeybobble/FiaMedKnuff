@@ -246,7 +246,16 @@
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5">
                     <Button Name="CreditsCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CreditsCloseBtn_Click" Style="{StaticResource ButtonStyleFixWhite}"/>
                     <Grid Height="500">
-                        
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="24">
+                            Skapat av Erika, Abbas, Henrik och Jacob för kursen Agilt Projekt 2.
+                            <LineBreak/>
+                            <LineBreak/>
+                            Cogwheel-textur:
+                            <LineBreak/>https://icon-icons.com/fr/icone/la-roue-dent%C3%A9e/83806 
+                            <LineBreak/>
+                            <LineBreak/>
+                            Pjäs-texturer och ljud av Jacob.
+                        </TextBlock>
                     </Grid>
                 </Grid>
             </Grid>
