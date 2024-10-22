@@ -96,7 +96,7 @@ namespace FiaMedKnuff {
         /// </summary>
         /// <param name="sender">Starta button</param>
         private void StartaBtn_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             GameManager.Init();
             Frame.Navigate(typeof(GamePage));
         }
