@@ -152,15 +152,34 @@
                 <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="9.23"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Name="animateCreditsDown">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CreditsDialog" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="1040"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="animateCreditsUp">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CreditsDialog" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1042.55"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.7000000" Value="9.23"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Page.Resources>
 
     <!-- It starts here -->
     <Grid x:Name="ParentGrid" SizeChanged="ParentGrid_SizeChanged">
         <Grid>
             <!-- Settings button and center box -->
-            <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}">
-                <Image Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/cogwheel_83806.png" />
-            </Button>
+            <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}" Margin="0, 0, 0, 10">
+                    <Image Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/cogwheel_83806.png" />
+                </Button>
+                <Button Name="CreditsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="CreditsBtn_Click"  Style="{StaticResource ButtonStyleFixWhiteGlobal}">
+                    <TextBlock FontSize="40" FontWeight="Bold" IsTextSelectionEnabled="False">i</TextBlock>
+                </Button>
+            </StackPanel>
+            
+            
 
             <Grid Background="{StaticResource StandardWhite}" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="15" BorderThickness="5" BorderBrush="Black" Margin="60" MaxWidth="1024">
                 <Viewbox>
@@ -217,6 +236,27 @@
                         </Grid>
                         <Button Width="270" Height="75" Margin="30" Content="Starta" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="40" FontFamily="Inconsolata" HorizontalAlignment="Center" Click="StartaBtn_Click" Style="{StaticResource ButtonStyleFixWhite}" Foreground="{StaticResource StandardText}"/>
                     </StackPanel>
+                </Grid>
+            </Grid>
+
+            <Grid Background="#80000000" x:Name="CreditsDialog" RenderTransformOrigin="0.5,0.5" Margin="0,-1040,0,1040">
+                <Grid.RenderTransform>
+                    <CompositeTransform/>
+                </Grid.RenderTransform>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5">
+                    <Button Name="CreditsCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CreditsCloseBtn_Click" Style="{StaticResource ButtonStyleFixWhite}"/>
+                    <Grid Height="500">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="24">
+                            Skapat av Erika, Abbas, Henrik och Jacob för kursen Agilt Projekt 2.
+                            <LineBreak/>
+                            <LineBreak/>
+                            Cogwheel-textur:
+                            <LineBreak/>https://icon-icons.com/fr/icone/la-roue-dent%C3%A9e/83806 
+                            <LineBreak/>
+                            <LineBreak/>
+                            Pjäs-texturer och ljud av Jacob.
+                        </TextBlock>
+                    </Grid>
                 </Grid>
             </Grid>
 
