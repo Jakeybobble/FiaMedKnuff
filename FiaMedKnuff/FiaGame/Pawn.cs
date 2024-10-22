@@ -64,6 +64,7 @@ namespace FiaMedKnuff.FiaGame {
         /// </summary>
         /// <param name="spaces">Spaces to move forwards</param>
         public void MoveInPath(int spaces) {
+            Win();
             if(CurrentTile.SpaceType == SpaceType.Home)
             {
                 if (GameManager.CurrentDieNumber == 1)
@@ -146,6 +147,8 @@ namespace FiaMedKnuff.FiaGame {
             var tile = CurrentTile;
             CurrentTile.Stander = null;
             CurrentTile.Refresh();
+
+            GamePage.UpdatePawnSlots(Team);
 
             Team.WinCheck();
         }

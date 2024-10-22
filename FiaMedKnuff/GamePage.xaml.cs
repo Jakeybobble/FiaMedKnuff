@@ -33,6 +33,11 @@ namespace FiaMedKnuff {
             greenTurnIndicator = GreenBorder;
             blueTurnIndicator = BlueBorder;
             DieBtnBorder = dieBtnBorder;
+
+            redSlots = RedSlots;
+            yellowSlots = YellowSlots;
+            greenSlots = GreenSlots;
+            blueSlots = BlueSlots;
             
         }
 
@@ -47,6 +52,10 @@ namespace FiaMedKnuff {
         public static Border greenTurnIndicator;
         public static Border blueTurnIndicator;
 
+        private static StackPanel redSlots;
+        private static StackPanel yellowSlots;
+        private static StackPanel greenSlots;
+        private static StackPanel blueSlots;
 
         /// <summary>
         /// Matches the visual of the die to the result rolled.
@@ -210,5 +219,35 @@ namespace FiaMedKnuff {
             DieResultDecisionPopupBackground.Width = ParentGrid.ActualWidth;
             DieResultDecisionPopupBackground.Height = ParentGrid.ActualHeight;
         }
+
+        /// <summary>
+        /// Updates pawn slots of [team] to show how many pawns of that team have won
+        /// </summary>
+        /// <param name="team">Team</param>
+        public static void UpdatePawnSlots(Team team) {
+            (StackPanel, TeamColor)[] slots = new(StackPanel, TeamColor)[] {
+                (redSlots, TeamColor.Red),
+                (yellowSlots, TeamColor.Yellow),
+                (greenSlots, TeamColor.Green),
+                (blueSlots, TeamColor.Blue),
+                };
+
+            foreach ((StackPanel panel, TeamColor color) in slots) {
+                if (color != team.TeamColor) continue;
+                int count = team.Pawns.Count(p => p.HasWon);
+
+                for(int i = 0; i < count; i++) {
+                    Image image = (Image) panel.Children[i];
+                    switch(color) {
+                        case TeamColor.Red: image.Source = new BitmapImage(new Uri($"ms-appx:///Assets/Pawns/RedPawn.png")); break;
+                        case TeamColor.Yellow: image.Source = new BitmapImage(new Uri($"ms-appx:///Assets/Pawns/YellowPawn.png")); break;
+                        case TeamColor.Green: image.Source = new BitmapImage(new Uri($"ms-appx:///Assets/Pawns/GreenPawn.png")); break;
+                        case TeamColor.Blue: image.Source = new BitmapImage(new Uri($"ms-appx:///Assets/Pawns/BluePawn.png")); break;
+                    }
+                }
+            }
+
+        }
+
     }
 }
