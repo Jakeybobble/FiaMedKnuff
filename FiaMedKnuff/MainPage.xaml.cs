@@ -34,27 +34,15 @@ namespace FiaMedKnuff
         }
 
         private void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
-        {           
-            NewGameOptionsPopup.IsOpen = true;
+        {            
+            animateDirectionDown.Begin();
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NewGameOptionsPopup.IsOpen = false;
+        {            
+            animateUpAndOut.Begin();
         }
-
-        // When user clicks outside of the Popup, it is closed.
-        private void PopupOutside_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            NewGameOptionsPopup.IsOpen = false;
-        }
-
-        // When user clicks inside of the Popup, it stays open. 
-        private void PopupInside_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            e.Handled = true;
-        }
-
+               
         // Clicking "Starta" navigates the user to the gameboard.
         private void StartaBtn_Click(object sender, RoutedEventArgs e)
         {                       
@@ -62,8 +50,8 @@ namespace FiaMedKnuff
         }
 
         private void ParentGrid_SizeChanged(object sender, SizeChangedEventArgs e) {
-            NewGameOptionsGrid.Width = ParentGrid.ActualWidth;
-            NewGameOptionsGrid.Height = ParentGrid.ActualHeight;
+            NewGameDialog.Width = ParentGrid.ActualWidth;
+            NewGameDialog.Height = ParentGrid.ActualHeight;
         }
     }
 }
