@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,9 +34,18 @@ namespace FiaMedKnuff
             // TBD Link to Settings Page
         }
 
-        private void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
-        {            
+        private async void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
+        {
+
             animateDirectionDown.Begin();
+
+            var element = new MediaElement();
+            var folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets\Sounds");
+            StorageFile file = await folder.GetFileAsync("trudelutt.wav");
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            element.SetSource(stream, "");
+            element.Play();
+
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
