@@ -158,9 +158,16 @@
     <Grid x:Name="ParentGrid" SizeChanged="ParentGrid_SizeChanged">
         <Grid>
             <!-- Settings button and center box -->
-            <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}">
-                <Image Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/cogwheel_83806.png" />
-            </Button>
+            <StackPanel Margin="20" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}" Margin="0, 0, 0, 10">
+                    <Image Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/cogwheel_83806.png" />
+                </Button>
+                <Button Name="CreditsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="CreditsBtn_Click"  Style="{StaticResource ButtonStyleFixWhiteGlobal}">
+                    <TextBlock FontSize="40" FontWeight="Bold" IsTextSelectionEnabled="False">i</TextBlock>
+                </Button>
+            </StackPanel>
+            
+            
 
             <Grid Background="{StaticResource StandardWhite}" HorizontalAlignment="Left" VerticalAlignment="Center" CornerRadius="15" BorderThickness="5" BorderBrush="Black" Margin="60" MaxWidth="1024">
                 <Viewbox>
