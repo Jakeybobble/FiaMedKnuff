@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Controls;
 
 namespace FiaMedKnuff.FiaGame {
     internal static class GameEvents
@@ -20,8 +21,7 @@ namespace FiaMedKnuff.FiaGame {
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
             {
                 if (tile.Stander == null) return;
-
-                // TODO: Comment/Uncomment for team lock
+                                
                 if (GameManager.CurrentGame.CurrentTeam != tile.Stander.Team) return;
                 Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
 
@@ -29,6 +29,7 @@ namespace FiaMedKnuff.FiaGame {
                 {
                     GamePage.stander = tile.Stander;
                     GamePage.dieDecisionPopup.IsOpen = true;
+                    GamePage.GlowEffectDie();
                    
                 }
                 else if (GameManager.CurrentDieNumber == 6 && tile.Stander.CurrentTile.SpaceType != SpaceType.Home)
@@ -37,6 +38,7 @@ namespace FiaMedKnuff.FiaGame {
                     tile.Stander?.MoveInPath(GameManager.CurrentDieNumber);
                     TileControl.Selectable = false;
                     GameManager.CurrentGame.CurrentGameState = Game.GameState.PreRoll;
+                    GamePage.GlowEffectDie();
                    
                 }
                 else
@@ -50,12 +52,14 @@ namespace FiaMedKnuff.FiaGame {
 
         public static int OnDieClicked() {
 
+            GamePage.EndGlowEffectDie();
+
             // Return if state is PostRoll
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll) {
                 GamePage.changeOutputText.Text = "Det är inte din tur.";
                 return -1;
             }
-
+            
             // Roll and set die number
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
