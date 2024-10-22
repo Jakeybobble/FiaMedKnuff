@@ -15,9 +15,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-using static System.Net.WebRequestMethods;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace FiaMedKnuff {
     /// <summary>
@@ -35,11 +32,14 @@ namespace FiaMedKnuff {
             yellowTurnIndicator = YellowBorder;
             greenTurnIndicator = GreenBorder;
             blueTurnIndicator = BlueBorder;
+            DieBtnBorder = dieBtnBorder;
+            
         }
 
         public static TextBlock changeOutputText;
         public static Popup dieDecisionPopup;
         public static Button position1Btn;
+        public static Border DieBtnBorder;
         public static Pawn stander;
 
         public static Border redTurnIndicator;
@@ -47,8 +47,12 @@ namespace FiaMedKnuff {
         public static Border greenTurnIndicator;
         public static Border blueTurnIndicator;
 
+
+        /// <summary>
+        /// Matches the visual of the die to the result rolled.
+        /// </summary>
         private void DieButton_Click(object sender, RoutedEventArgs e)
-        {
+        {           
             int dieThrow = GameEvents.OnDieClicked();
 
             if (dieThrow != -1) {
@@ -60,12 +64,35 @@ namespace FiaMedKnuff {
             }
 
         }
+              
+        /// <summary>
+        /// Gives the Glow Effect on the Die when it needs to be pressed by the user.
+        /// </summary>
+        public static void GlowEffectDie()
+        {
+            DieBtnBorder.Background = new SolidColorBrush(Windows.UI.Colors.White);
+            DieBtnBorder.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Yellow);
+
+        }
+
+        /// <summary>
+        /// Ends the Glow Effect after the die has been pressed.
+        /// </summary>
+        public static void EndGlowEffectDie()
+        {
+            Trace.WriteLine("Entered EndGlow!");
+            DieBtnBorder.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
+            DieBtnBorder.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
+        }
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
             // TBD Link to Settings Page
         }
 
+        /// <summary>
+        /// Starts the animation which brings the NewGameOptions into view.
+        /// </summary>
         private void NyttSpelBtn_Click(object sender, RoutedEventArgs e)
         {            
             animateDirectionDown.Begin();

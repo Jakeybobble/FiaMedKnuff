@@ -125,6 +125,7 @@ namespace FiaMedKnuff.FiaGame {
 
         public void StartTurn()
         {
+            GamePage.GlowEffectDie();
             GamePage.ChangeOutputTextBox($"Det är " + CurrentTeam.Name + "s tur att rulla tärningen!");
             CurrentGameState = GameState.PreRoll;
 
