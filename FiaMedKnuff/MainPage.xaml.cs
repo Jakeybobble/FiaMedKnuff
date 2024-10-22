@@ -53,10 +53,17 @@ namespace FiaMedKnuff
         private void ParentGrid_SizeChanged(object sender, SizeChangedEventArgs e) {
             NewGameDialog.Width = ParentGrid.ActualWidth;
             NewGameDialog.Height = ParentGrid.ActualHeight;
+
+            CreditsDialog.Width = ParentGrid.ActualWidth;
+            CreditsDialog.Height = ParentGrid.ActualHeight;
         }
 
         private void CreditsBtn_Click(object sender, RoutedEventArgs e) {
-            
+            animateCreditsDown.Begin();
+        }
+
+        private void CreditsCloseBtn_Click(object sender, RoutedEventArgs e) {
+            animateCreditsUp.Begin();
         }
     }
 }
