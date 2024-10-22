@@ -203,6 +203,12 @@ namespace FiaMedKnuff {
         {
             NewGameDialog.Width = ParentGrid.ActualWidth;
             NewGameDialog.Height = ParentGrid.ActualHeight;
+
+            RulesPopup.Width = ParentGrid.ActualWidth;
+            RulesPopup.Height = ParentGrid.ActualHeight;
+
+            DieResultDecisionPopupBackground.Width = ParentGrid.ActualWidth;
+            DieResultDecisionPopupBackground.Height = ParentGrid.ActualHeight;
         }
     }
 }
