@@ -149,9 +149,9 @@
     <Content Include="Assets\Crown.png" />
     <Content Include="Assets\Pawns\BluePawn_Highlighted.png" />
     <Content Include="Assets\Pawns\GreenPawn_Highlighted.png" />
+    <Content Include="Assets\Pawns\PawnSlot.png" />
     <Content Include="Assets\Pawns\RedPawn_Highlighted.png" />
     <Content Include="Assets\Pawns\YellowPawn_Highlighted.png" />
-    <Content Include="Assets\pawn_2.png" />
     <Content Include="Assets\gear-icon-png-2221.png" />
     <Content Include="Assets\Die\Die1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
