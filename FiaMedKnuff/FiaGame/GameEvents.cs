@@ -53,14 +53,15 @@ namespace FiaMedKnuff.FiaGame {
 
         public static List<int> ForcedRolls = new List<int>();
 
-        public static int OnDieClicked() {
+        public static async Task OnDieClicked() {
 
             GamePage.EndGlowEffectDie();
 
             // Return if state is PostRoll
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll) {
                 GamePage.changeOutputText.Text = "Det är inte din tur.";
-                return -1;
+                GamePage.SetDie(-1);
+                return;
             }
             
             // Roll and set die number
@@ -73,6 +74,7 @@ namespace FiaMedKnuff.FiaGame {
             }
 
             GameManager.CurrentDieNumber = dieThrow;
+            GamePage.SetDie(dieThrow);
 
             if (GameManager.CurrentGame.CurrentTeam.CanMoveCheck()) {
                 // Set all to be selectable and change to PostRoll
@@ -80,12 +82,12 @@ namespace FiaMedKnuff.FiaGame {
                 GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
             } else {
                 // Skip turn
-
+                GamePage.ChangeOutputTextBox($"{ GameManager.CurrentGame.CurrentTeam.Name} blev tvungen att stå över.");
+                await Task.Delay(1500);
                 GameManager.CurrentGame.EndTurn();
             }
 
-            
-            return dieThrow;
+            return;
 
 
         }

@@ -40,6 +40,8 @@ namespace FiaMedKnuff {
             blueSlots = BlueSlots;
 
             rollsCheatBox = RollsCheatBox;
+
+            dieButton = DieButton;
             
         }
 
@@ -61,21 +63,29 @@ namespace FiaMedKnuff {
 
         private static TextBox rollsCheatBox;
 
+        public static bool DieIsRollable = true;
+
+        private static Button dieButton;
+
         /// <summary>
         /// Matches the visual of the die to the result rolled.
         /// </summary>
-        private void DieButton_Click(object sender, RoutedEventArgs e)
-        {           
-            int dieThrow = GameEvents.OnDieClicked();
+        private async void DieButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!DieIsRollable) return;
 
+            await GameEvents.OnDieClicked();
+
+        }
+
+        public static void SetDie(int dieThrow) {
             if (dieThrow != -1) {
                 // Sets the image of the die to match the result rolled.
                 GamePage.changeOutputText.Text = $"Du rullade en {dieThrow}:a!";
                 ImageBrush img = new ImageBrush();
                 img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
-                DieButton.Background = img;
+                dieButton.Background = img;
             }
-
         }
               
         /// <summary>
