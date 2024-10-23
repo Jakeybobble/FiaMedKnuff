@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Playback;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -47,6 +48,12 @@ namespace FiaMedKnuff
             element.SetSource(stream, "");
             element.Play();
 
+            //det äe extra kod för ljud bak
+
+            {
+                animateDirectionDown.Begin();
+
+            }
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -55,8 +62,20 @@ namespace FiaMedKnuff
         }
                
         // Clicking "Starta" navigates the user to the gameboard.
-        private void StartaBtn_Click(object sender, RoutedEventArgs e)
+        private async void StartaBtn_Click(object sender, RoutedEventArgs e)
         {
+         
+
+            var element = new MediaElement();
+            var folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets\Sounds");
+            StorageFile file = await folder.GetFileAsync("bakgrund_musik.mp3");
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            element.SetSource(stream, "");
+            element.Volume=0.02;
+            element.IsLooping=true;
+            element.Play();
+
+
             GameManager.Init();
             Frame.Navigate(typeof(GamePage));
         }
