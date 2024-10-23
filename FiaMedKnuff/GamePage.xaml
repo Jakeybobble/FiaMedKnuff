@@ -370,7 +370,7 @@
             <Popup x:Name="RollDiePopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid Background="#80000000" x:Name="DieAnimationPopupBackground">
                     <Grid Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="700" Height="450" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Image Source="ms-appx:///Assets/Die/DieAnimation.gif" Stretch="None"/>
+                        <Image Source="ms-appx:///Assets/Die/DieAnimation2.gif" Stretch="None"/>
 
                     </Grid>
                 </Grid>

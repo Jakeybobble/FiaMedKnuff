@@ -43,6 +43,7 @@ namespace FiaMedKnuff {
             blueSlots = BlueSlots;
             
         }
+        private DispatcherTimer timer;
 
         public static TextBlock changeOutputText;
         public static Popup dieDecisionPopup;
@@ -61,13 +62,31 @@ namespace FiaMedKnuff {
         private static StackPanel blueSlots;
 
         /// <summary>
-        /// Matches the visual of the die to the result rolled.
+        /// Opens the RollDiePopup and handles the die roll animation.
         /// </summary>
         private void DieButton_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             RollDiePopup.IsOpen = true;
-            int dieThrow = GameEvents.OnDieClicked();
 
+            // Timer to auto close DieRollAnimation.
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1.9); // 2 seconds delay
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        /// <summary>
+        /// Closes the RollDiePopup, stops the timer, and gives die result outputs to user.
+        /// </summary>
+        private void Timer_Tick(object sender, object e)
+        {
+            RollDiePopup.IsOpen = false;
+
+            // Stops the timer to prevent multiple ticks.
+            timer.Stop();
+
+            int dieThrow = GameEvents.OnDieClicked();
+            // Sets the image of the die.
             if (dieThrow != -1) {
                 // Sets the image of the die to match the result rolled.
                 GamePage.changeOutputText.Text = $"Du rullade en {dieThrow}:a!";
@@ -75,9 +94,9 @@ namespace FiaMedKnuff {
                 img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
                 DieButton.Background = img;
             }
+        }
 
-        }    
-              
+
         /// <summary>
         /// Gives the Glow Effect on the Die when it needs to be pressed by the user.
         /// </summary>
@@ -92,8 +111,7 @@ namespace FiaMedKnuff {
         /// Ends the Glow Effect after the die has been pressed.
         /// </summary>
         public static void EndGlowEffectDie()
-        {
-            Trace.WriteLine("Entered EndGlow!");
+        {            
             DieBtnBorder.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
             DieBtnBorder.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
         }
