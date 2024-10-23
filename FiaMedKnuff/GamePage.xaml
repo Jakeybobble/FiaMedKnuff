@@ -351,7 +351,7 @@
                 </Button>
                 <Button Name="RulesBtn" Content="?" Width="75" Height="75" Background="{StaticResource WhiteButton}" FontSize="50" FontFamily="Inconsolata" FontWeight="Bold" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="RulesBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}" Foreground="{StaticResource StandardText}"/>
             </StackPanel>
-            
+
             <!-- Popups -->
 
             <Popup Name="DieResultDecisionPopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -367,19 +367,17 @@
                 </Grid>
             </Popup>
 
-            <Popup x:Name="RollDieAnimation" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Grid Background="#80000000">
-                    <Grid Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="1030" Height="800" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <MediaPlayerElement x:Name="mediaPlayerElement" AutoPlay="True" AreTransportControlsEnabled="True"/>
-                        
-                        
-                    </Grid>
+            <Popup x:Name="RollDiePopup" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid Background="#80000000" x:Name="DieAnimationPopupBackground">
+                    <Grid Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="700" Height="450" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image Source="ms-appx:///Assets/Die/DieAnimation.gif" Stretch="None"/>
 
-                </Grid>             
+                    </Grid>
+                </Grid>
             </Popup>
 
         </Grid>
-        
+
         <!-- Animation Dialogs -->
 
         <Grid Background="#80000000" x:Name="NewGameDialog" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="1500" Margin="0,-1040,0,1040">
@@ -412,6 +410,7 @@
                 <Button Name="RulesCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}"/>
             </Grid>
         </Grid>
+
 
     </Grid>
 </Page>

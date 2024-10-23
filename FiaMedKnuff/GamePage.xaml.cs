@@ -65,6 +65,7 @@ namespace FiaMedKnuff {
         /// </summary>
         private void DieButton_Click(object sender, RoutedEventArgs e)
         {           
+            RollDiePopup.IsOpen = true;
             int dieThrow = GameEvents.OnDieClicked();
 
             if (dieThrow != -1) {
@@ -75,7 +76,7 @@ namespace FiaMedKnuff {
                 DieButton.Background = img;
             }
 
-        }
+        }    
               
         /// <summary>
         /// Gives the Glow Effect on the Die when it needs to be pressed by the user.
@@ -221,6 +222,9 @@ namespace FiaMedKnuff {
 
             DieResultDecisionPopupBackground.Width = ParentGrid.ActualWidth;
             DieResultDecisionPopupBackground.Height = ParentGrid.ActualHeight;
+
+            DieAnimationPopupBackground.Width = ParentGrid.ActualWidth;
+            DieAnimationPopupBackground.Height = ParentGrid.ActualHeight;
         }
 
         /// <summary>

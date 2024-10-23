@@ -150,6 +150,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Crown.png" />
+    <Content Include="Assets\Die\DieAnimation.gif" />
     <Content Include="Assets\Pawns\BluePawn_Highlighted.png" />
     <Content Include="Assets\Pawns\GreenPawn_Highlighted.png" />
     <Content Include="Assets\Pawns\PawnSlot.png" />
