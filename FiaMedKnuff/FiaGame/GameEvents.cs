@@ -83,7 +83,7 @@ namespace FiaMedKnuff.FiaGame {
             } else {
                 // Skip turn
                 GamePage.ChangeOutputTextBox($"{ GameManager.CurrentGame.CurrentTeam.Name} blev tvungen att stå över.");
-                await Task.Delay(1500);
+                await Task.Delay(1400);
                 GameManager.CurrentGame.EndTurn();
             }
 

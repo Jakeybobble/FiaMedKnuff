@@ -177,7 +177,17 @@ namespace FiaMedKnuff.FiaGame {
                 Trace.WriteLine("Can't move due to busy front space.");
                 return false;
             }
-            Trace.WriteLine("Can move!");
+
+            if (SpaceInPath + GameManager.CurrentDieNumber > Team.Path.Count - 1) {
+                var count = Team.Path.Count - 1;
+                var newSpace = count - (SpaceInPath + GameManager.CurrentDieNumber) % count;
+                if (Team.Path[newSpace].Stander?.Team == Team) {
+                    Trace.WriteLine($"Can't move due to teammate on pushback tile.");
+                    return false;
+                }
+            }
+
+                Trace.WriteLine("Can move!");
             return true;
         }
      }
