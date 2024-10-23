@@ -21,6 +21,7 @@ namespace FiaMedKnuff.FiaGame {
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
             {
                 if (tile.Stander == null) return;
+                if (!tile.Stander.CanMove()) return;
                                 
                 if (GameManager.CurrentGame.CurrentTeam != tile.Stander.Team) return;
                 Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
@@ -73,9 +74,17 @@ namespace FiaMedKnuff.FiaGame {
 
             GameManager.CurrentDieNumber = dieThrow;
 
-            // Set all to be selectable and change to PostRoll
-            TileControl.Selectable = true;
-            GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+            if (GameManager.CurrentGame.CurrentTeam.CanMoveCheck()) {
+                // Set all to be selectable and change to PostRoll
+                TileControl.Selectable = true;
+                GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+            } else {
+                // Skip turn
+
+                GameManager.CurrentGame.EndTurn();
+            }
+
+            
             return dieThrow;
 
 

@@ -162,18 +162,22 @@ namespace FiaMedKnuff.FiaGame {
         public bool CanMove() {
             if (CurrentTile.SpaceType == SpaceType.Home) {
                 if(GameManager.CurrentDieNumber != 1 && GameManager.CurrentDieNumber != 6) {
+                    Trace.WriteLine("Can't move due to die not being 1 or 6.");
                     return false;
                 }
 
                 Tile startTile = Team.Path[0]; // Previously: GameManager.CurrentGame.Tiles[SpaceType.Surrounding][Team.StartingSpace]
-                if (GameManager.CurrentDieNumber == 1 && startTile.Stander.Team == Team) {
+                if (GameManager.CurrentDieNumber == 1 && startTile.Stander?.Team == Team) {
+                    Trace.WriteLine("Can't move due to busy starting space.");
                     return false;
                 }
             }
             Tile nextTile = Team.Path[Math.Clamp(SpaceInPath + 1, 0, Team.Path.Count - 1)];
-            if (nextTile.Stander.Team == Team) {
+            if (nextTile.Stander?.Team == Team) {
+                Trace.WriteLine("Can't move due to busy front space.");
                 return false;
             }
+            Trace.WriteLine("Can move!");
             return true;
         }
      }
