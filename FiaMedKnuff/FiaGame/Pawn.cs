@@ -42,7 +42,9 @@ namespace FiaMedKnuff.FiaGame {
         /// <param name="to">Tile to set position to</param>
         public void SetTile(Tile to) {
             Tile from = CurrentTile;
-            if (to.Stander != null) {
+            if (from == to) return;
+
+            if (to.Stander != null && to.Stander != this) {
                 to.Stander.Shove();
             }
             from.Stander = null; to.Stander = this;
@@ -132,6 +134,7 @@ namespace FiaMedKnuff.FiaGame {
             for(int i = 0; i < 4; i++) {
                 Tile tile = GameManager.CurrentGame.Tiles[SpaceType.Home][i + homeSpace];
                 if (tile.Stander == null) {
+                    SpaceInPath = 0;
                     SetTile(tile);
                     break;
                 }
