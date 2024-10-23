@@ -30,7 +30,7 @@ namespace FiaMedKnuff
         /// </summary>
         public App()
         {
-            GameManager.Init();
+            //GameManager.Init();
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

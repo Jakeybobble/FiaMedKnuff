@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
 namespace FiaMedKnuff.FiaGame {
     public class Team {
@@ -56,6 +58,18 @@ namespace FiaMedKnuff.FiaGame {
                 Path.Add(GameManager.CurrentGame.Tiles[SpaceType.TowardsCenter][TowardsCenterStartingSpace + i]);
             }
             Path.Add(GameManager.CurrentGame.Tiles[SpaceType.Center][0]);
+        }
+
+        /// <summary>
+        /// If all pawns have won, go to the end screen
+        /// </summary>
+        public void WinCheck() {
+            if (!Pawns.All(pawn => pawn.HasWon)) return;
+
+            ResultatPage.WinningTeam = TeamColor;
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(ResultatPage));
+
         }
     }
 }

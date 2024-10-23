@@ -21,8 +21,8 @@
                 <Border  CornerRadius="35" BorderThickness="5" BorderBrush="Black" Width="300" Height="300">
                     <StackPanel  Background="White" CornerRadius="15">
                         <Image Height="100" Width="100" Source="/Assets/Crown.png" />
-                        <Image Height="100" Width="100"  Source="/Assets/Pawns/RedPawn.png"/>
-                        <TextBlock Text="Röd har vunnit spelet!"
+                        <Image x:Name="PawnImage" Height="100" Width="100"  Source="/Assets/Pawns/RedPawn.png"/>
+                        <TextBlock x:Name="WinningText" Text="Rött lag har vunnit spelet!"
         
                         Foreground="Black"
                          HorizontalAlignment="Center"

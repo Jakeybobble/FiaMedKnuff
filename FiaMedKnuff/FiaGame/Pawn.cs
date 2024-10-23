@@ -26,6 +26,8 @@ namespace FiaMedKnuff.FiaGame {
         public Tile CurrentTile;
         public int SpaceInPath = 0;
 
+        public bool HasWon = false;
+
         public Pawn() { }
 
         public Pawn(Team team, Tile currentTile) {
@@ -92,8 +94,7 @@ namespace FiaMedKnuff.FiaGame {
 
                     if(CurrentTile.SpaceType == SpaceType.Center)
                     {
-                        Frame navigationFrame = Window.Current.Content as Frame;
-                        navigationFrame.Navigate(typeof(ResultatPage));
+                        Win();
                     }
                     if (GameManager.CurrentDieNumber == 6) {
                         string text = "Du får rulla en gång till!";
@@ -135,6 +136,18 @@ namespace FiaMedKnuff.FiaGame {
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Take the pawn out of the game and run Team.WinCheck()
+        /// </summary>
+        public void Win() {
+            HasWon = true;
+            var tile = CurrentTile;
+            CurrentTile.Stander = null;
+            CurrentTile.Refresh();
+
+            Team.WinCheck();
         }
      }
 }

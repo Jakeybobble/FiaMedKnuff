@@ -123,7 +123,7 @@ namespace FiaMedKnuff {
         /// </summary>
         /// <param name="sender">Starta button</param>
         private void StartaBtn_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             GameManager.Init();
             Frame.Navigate(typeof(GamePage));
         }
@@ -203,6 +203,12 @@ namespace FiaMedKnuff {
         {
             NewGameDialog.Width = ParentGrid.ActualWidth;
             NewGameDialog.Height = ParentGrid.ActualHeight;
+
+            RulesPopup.Width = ParentGrid.ActualWidth;
+            RulesPopup.Height = ParentGrid.ActualHeight;
+
+            DieResultDecisionPopupBackground.Width = ParentGrid.ActualWidth;
+            DieResultDecisionPopupBackground.Height = ParentGrid.ActualHeight;
         }
     }
 }
