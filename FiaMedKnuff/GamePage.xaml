@@ -367,7 +367,20 @@
                 </Grid>
             </Popup>
 
+            <Popup x:Name="RollDieAnimation" IsOpen="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid Background="#80000000">
+                    <Grid Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Width="1030" Height="800" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <MediaPlayerElement x:Name="mediaPlayerElement" AutoPlay="True" AreTransportControlsEnabled="True"/>
+                        
+                        
+                    </Grid>
+
+                </Grid>             
+            </Popup>
+
         </Grid>
+        
+        <!-- Animation Dialogs -->
 
         <Grid Background="#80000000" x:Name="NewGameDialog" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="1500" Margin="0,-1040,0,1040">
             <Grid.RenderTransform>

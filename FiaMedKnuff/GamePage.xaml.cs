@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
+using Windows.Media.Playback;
+using Windows.Media.Core;
 
 namespace FiaMedKnuff {
     /// <summary>
