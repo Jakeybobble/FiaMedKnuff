@@ -38,6 +38,8 @@ namespace FiaMedKnuff {
             yellowSlots = YellowSlots;
             greenSlots = GreenSlots;
             blueSlots = BlueSlots;
+
+            rollsCheatBox = RollsCheatBox;
             
         }
 
@@ -56,6 +58,8 @@ namespace FiaMedKnuff {
         private static StackPanel yellowSlots;
         private static StackPanel greenSlots;
         private static StackPanel blueSlots;
+
+        private static TextBox rollsCheatBox;
 
         /// <summary>
         /// Matches the visual of the die to the result rolled.
@@ -249,5 +253,31 @@ namespace FiaMedKnuff {
 
         }
 
+        private void RollsCheatBox_TextChanged(object sender, TextChangedEventArgs e) {
+            TextBox box = (TextBox)sender;
+            var input = box.Text;
+            foreach(char c in input) {
+                if ((c < '0' || c > '9') && c != ' ') return;
+            }
+            var array = input.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            int[] ints = Array.ConvertAll(array, s => int.Parse(s));
+
+            Trace.WriteLine(string.Join("-", ints));
+            GameEvents.ForcedRolls = ints.ToList();
+
+        }
+
+        public static void UpdateRollsCheatBox() {
+            int i = 0;
+            foreach(char c in rollsCheatBox.Text) {
+                i++;
+                if (c == ' ') break;
+            }
+            rollsCheatBox.Text = rollsCheatBox.Text.Remove(0, i);
+        }
+
+        private void RulesCloseBtn_RightTapped(object sender, RightTappedRoutedEventArgs e) {
+            CheatPanel.Visibility = CheatPanel.Visibility == Visibility ? Visibility.Collapsed : Visibility.Visible;
+        }
     }
 }

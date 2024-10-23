@@ -50,6 +50,8 @@ namespace FiaMedKnuff.FiaGame {
             }           
         }
 
+        public static List<int> ForcedRolls = new List<int>();
+
         public static int OnDieClicked() {
 
             GamePage.EndGlowEffectDie();
@@ -63,6 +65,11 @@ namespace FiaMedKnuff.FiaGame {
             // Roll and set die number
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
+
+            if (ForcedRolls.Count != 0) {
+                dieThrow = ForcedRolls[0];
+                GamePage.UpdateRollsCheatBox();
+            }
 
             GameManager.CurrentDieNumber = dieThrow;
 
