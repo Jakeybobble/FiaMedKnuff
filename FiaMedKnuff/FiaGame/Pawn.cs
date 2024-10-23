@@ -154,5 +154,27 @@ namespace FiaMedKnuff.FiaGame {
 
             Team.WinCheck();
         }
+
+        /// <summary>
+        /// Returns whether it is possible for this pawn to move
+        /// </summary>
+        /// <returns></returns>
+        public bool CanMove() {
+            if (CurrentTile.SpaceType == SpaceType.Home) {
+                if(GameManager.CurrentDieNumber != 1 && GameManager.CurrentDieNumber != 6) {
+                    return false;
+                }
+
+                Tile startTile = Team.Path[0]; // Previously: GameManager.CurrentGame.Tiles[SpaceType.Surrounding][Team.StartingSpace]
+                if (GameManager.CurrentDieNumber == 1 && startTile.Stander.Team == Team) {
+                    return false;
+                }
+            }
+            Tile nextTile = Team.Path[Math.Clamp(SpaceInPath + 1, 0, Team.Path.Count - 1)];
+            if (nextTile.Stander.Team == Team) {
+                return false;
+            }
+            return true;
+        }
      }
 }
