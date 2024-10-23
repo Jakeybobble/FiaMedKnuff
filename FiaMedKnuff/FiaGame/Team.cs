@@ -71,5 +71,16 @@ namespace FiaMedKnuff.FiaGame {
             navigationFrame.Navigate(typeof(ResultatPage));
 
         }
+
+
+        /// <summary>
+        /// Returns true if any pawn in the team can move
+        /// </summary>
+        public bool CanMoveCheck() {
+            if (Pawns.All(pawn => !pawn.CanMove())) {
+                return false;
+            }
+            return true;
+        }
     }
 }

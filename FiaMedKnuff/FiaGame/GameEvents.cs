@@ -21,6 +21,7 @@ namespace FiaMedKnuff.FiaGame {
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll)
             {
                 if (tile.Stander == null) return;
+                if (!tile.Stander.CanMove()) return;
                                 
                 if (GameManager.CurrentGame.CurrentTeam != tile.Stander.Team) return;
                 Trace.WriteLine($"Boop! You have clicked tile with space {tile.Space}!");
@@ -50,26 +51,43 @@ namespace FiaMedKnuff.FiaGame {
             }           
         }
 
-        public static int OnDieClicked() {
+        public static List<int> ForcedRolls = new List<int>();
+
+        public static async Task OnDieClicked() {
 
             GamePage.EndGlowEffectDie();
 
             // Return if state is PostRoll
             if (GameManager.CurrentGame.CurrentGameState == Game.GameState.PostRoll) {
                 GamePage.changeOutputText.Text = "Det är inte din tur.";
-                return -1;
+                GamePage.SetDie(-1);
+                return;
             }
             
             // Roll and set die number
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
 
-            GameManager.CurrentDieNumber = dieThrow;
+            if (ForcedRolls.Count != 0) {
+                dieThrow = ForcedRolls[0];
+                GamePage.UpdateRollsCheatBox();
+            }
 
-            // Set all to be selectable and change to PostRoll
-            TileControl.Selectable = true;
-            GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
-            return dieThrow;
+            GameManager.CurrentDieNumber = dieThrow;
+            GamePage.SetDie(dieThrow);
+
+            if (GameManager.CurrentGame.CurrentTeam.CanMoveCheck()) {
+                // Set all to be selectable and change to PostRoll
+                TileControl.Selectable = true;
+                GameManager.CurrentGame.CurrentGameState = Game.GameState.PostRoll;
+            } else {
+                // Skip turn
+                GamePage.ChangeOutputTextBox($"{ GameManager.CurrentGame.CurrentTeam.Name} blev tvungen att stå över.");
+                await Task.Delay(1400);
+                GameManager.CurrentGame.EndTurn();
+            }
+
+            return;
 
 
         }
