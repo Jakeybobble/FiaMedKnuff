@@ -147,6 +147,8 @@ namespace FiaMedKnuff.FiaGame {
             CurrentTile.Stander = null;
             CurrentTile.Refresh();
 
+            GamePage.UpdatePawnSlots(Team);
+
             Team.WinCheck();
         }
      }
