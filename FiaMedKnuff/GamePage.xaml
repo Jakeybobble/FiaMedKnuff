@@ -389,8 +389,8 @@
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5">
                 <Button  x:Name="NewGameCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}"/>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Width="200" Height="70" Margin="30" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata"/>
-                    <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata"/>
+                    <TextBlock Width="200" Height="70" Margin="30" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Foreground="{StaticResource StandardText}"/>
+                    <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Foreground="{StaticResource StandardText}"/>
 
                     <Grid BorderBrush="Black" BorderThickness="5" CornerRadius="15" Width="200" Height="200" Background="{StaticResource StandardWhite}">
                         <Image Width="150" Height="150" Source="/Assets/Pawns/RedPawn.png"/>
@@ -407,9 +407,9 @@
             </Grid.RenderTransform>
             <Grid Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5" Height="800" HorizontalAlignment="Center">
                 <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
-                    <TextBlock Name="RulesText" Text="Rules Text" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="28" FontFamily="Inconsolata" Margin="10,60,0,0"/>
+                    <TextBlock Name="RulesText" Text="Rules Text" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="28" FontFamily="Inconsolata" Margin="10,60,0,0" Foreground="{StaticResource StandardText}"/>
                 </ScrollViewer>
-                <Button Name="RulesCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click"/>
+                <Button Name="RulesCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}"/>
             </Grid>
         </Grid>
 

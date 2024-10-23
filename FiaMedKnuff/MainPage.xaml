@@ -174,7 +174,7 @@
                 <Button Opacity="0.5" Name="SettingsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}" Margin="0, 0, 0, 10">
                     <Image Width="45" Height="45" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/cogwheel_83806.png" />
                 </Button>
-                <Button Name="CreditsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="CreditsBtn_Click"  Style="{StaticResource ButtonStyleFixWhiteGlobal}">
+                <Button Name="CreditsBtn" Width="75" Height="75" Background="White" BorderBrush="Black" BorderThickness="5" CornerRadius="15" Click="CreditsBtn_Click"  Style="{StaticResource ButtonStyleFixWhiteGlobal}" Foreground="{StaticResource StandardText}">
                     <TextBlock FontSize="40" FontWeight="Bold" IsTextSelectionEnabled="False">i</TextBlock>
                 </Button>
             </StackPanel>
@@ -228,8 +228,8 @@
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5">
                     <Button Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleFixWhite}"/>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Width="200" Height="70" Margin="30" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata"/>
-                        <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata"/>
+                        <TextBlock Width="200" Height="70" Margin="30" Text="Nytt Spel" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Foreground="{StaticResource StandardText}"/>
+                        <TextBlock Width="250" Height="70" Text="Din färg är:" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="45" FontFamily="Inconsolata" Foreground="{StaticResource StandardText}"/>
 
                         <Grid BorderBrush="Black" BorderThickness="5" CornerRadius="15" Width="200" Height="200" Background="{StaticResource StandardWhite}">
                             <Image Width="150" Height="150" Source="/Assets/Pawns/RedPawn.png"/>
@@ -244,9 +244,9 @@
                     <CompositeTransform/>
                 </Grid.RenderTransform>
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Background="{StaticResource StandardOrange}" BorderBrush="Black" BorderThickness="5">
-                    <Button Name="CreditsCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CreditsCloseBtn_Click" Style="{StaticResource ButtonStyleFixWhite}"/>
+                    <Button Name="CreditsCloseBtn" Width="70" Height="70" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Foreground="Red" Background="{StaticResource WhiteButton}" BorderBrush="Black" BorderThickness="5" CornerRadius="15" FontSize="50" Padding="0,0,2,0" FontFamily="Inconsolata" Margin="0,10,10,0" Click="CreditsCloseBtn_Click" Style="{StaticResource ButtonStyleFixWhiteGlobal}"/>
                     <Grid Height="500">
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="24">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="24" Foreground="{StaticResource StandardText}">
                             Skapat av Erika, Abbas, Henrik och Jacob för kursen Agilt Projekt 2.
                             <LineBreak/>
                             <LineBreak/>
