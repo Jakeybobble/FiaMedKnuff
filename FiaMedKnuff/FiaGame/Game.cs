@@ -129,6 +129,8 @@ namespace FiaMedKnuff.FiaGame {
             GamePage.ChangeOutputTextBox($"Det är " + CurrentTeam.Name + "s tur att rulla tärningen!");
             CurrentGameState = GameState.PreRoll;
 
+            Trace.WriteLine($"{GetTeamColorString(CurrentTeam.TeamColor)} is starting their turn.");
+
             var border = GetTeamColorBorder(CurrentTeam.TeamColor);
             border.BorderBrush = (SolidColorBrush)App.Current.Resources[GetTeamColorString(CurrentTeam.TeamColor)];
         }
