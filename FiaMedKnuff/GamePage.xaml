@@ -349,6 +349,7 @@
                         <TextBlock FontSize="20" HorizontalAlignment="Center">Cheat Menu 2000</TextBlock>
                         <TextBlock>Force next die rolls:</TextBlock>
                         <TextBox Name="RollsCheatBox" TextChanged="RollsCheatBox_TextChanged"></TextBox>
+                        <CheckBox x:Name="RollingAnimationCheck" IsChecked="True" Checked="RollingAnimationCheck_Checked" Unchecked="RollingAnimationCheck_Unchecked">Rolling animation</CheckBox>
                     </StackPanel>
                 </Border>
             </StackPanel>
