@@ -63,7 +63,11 @@ namespace FiaMedKnuff.FiaGame {
                 GamePage.SetDie(-1);
                 return;
             }
-            
+            GamePage.DieIsRollable = false;
+            GamePage.RollDiePopupElement.IsOpen = true;
+            await Task.Delay(1900);
+            GamePage.RollDiePopupElement.IsOpen = false;
+
             // Roll and set die number
             Random rnd = new Random();
             int dieThrow = rnd.Next(1, 7);
@@ -87,6 +91,7 @@ namespace FiaMedKnuff.FiaGame {
                 GameManager.CurrentGame.EndTurn();
             }
 
+            GamePage.DieIsRollable = true;
             return;
 
 
