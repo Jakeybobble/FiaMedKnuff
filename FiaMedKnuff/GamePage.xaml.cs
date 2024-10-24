@@ -45,6 +45,8 @@ namespace FiaMedKnuff {
             rollsCheatBox = RollsCheatBox;
 
             dieButton = DieButton;
+
+            RollDiePopupElement = RollDiePopup;
             
         }
         private DispatcherTimer timer;
@@ -71,6 +73,8 @@ namespace FiaMedKnuff {
 
         private static Button dieButton;
 
+        public static Popup RollDiePopupElement;
+
         
         /*
         private void DieButton_Click(object sender, RoutedEventArgs e)
@@ -95,7 +99,7 @@ namespace FiaMedKnuff {
             // Stops the timer to prevent multiple ticks.
             timer.Stop();
 
-            int dieThrow = GameEvents.OnDieClicked();
+            //int dieThrow = GameEvents.OnDieClicked();
             // Sets the image of the die.
           
         }
