@@ -38,6 +38,10 @@ namespace FiaMedKnuff {
             yellowSlots = YellowSlots;
             greenSlots = GreenSlots;
             blueSlots = BlueSlots;
+
+            rollsCheatBox = RollsCheatBox;
+
+            dieButton = DieButton;
             
         }
 
@@ -57,21 +61,31 @@ namespace FiaMedKnuff {
         private static StackPanel greenSlots;
         private static StackPanel blueSlots;
 
+        private static TextBox rollsCheatBox;
+
+        public static bool DieIsRollable = true;
+
+        private static Button dieButton;
+
         /// <summary>
         /// Matches the visual of the die to the result rolled.
         /// </summary>
-        private void DieButton_Click(object sender, RoutedEventArgs e)
-        {           
-            int dieThrow = GameEvents.OnDieClicked();
+        private async void DieButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!DieIsRollable) return;
 
+            await GameEvents.OnDieClicked();
+
+        }
+
+        public static void SetDie(int dieThrow) {
             if (dieThrow != -1) {
                 // Sets the image of the die to match the result rolled.
                 GamePage.changeOutputText.Text = $"Du rullade en {dieThrow}:a!";
                 ImageBrush img = new ImageBrush();
                 img.ImageSource = new BitmapImage(new Uri($@"ms-appx:///Assets/Die/Die{dieThrow}.png"));
-                DieButton.Background = img;
+                dieButton.Background = img;
             }
-
         }
               
         /// <summary>
@@ -249,5 +263,31 @@ namespace FiaMedKnuff {
 
         }
 
+        private void RollsCheatBox_TextChanged(object sender, TextChangedEventArgs e) {
+            TextBox box = (TextBox)sender;
+            var input = box.Text;
+            foreach(char c in input) {
+                if ((c < '0' || c > '9') && c != ' ') return;
+            }
+            var array = input.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            int[] ints = Array.ConvertAll(array, s => int.Parse(s));
+
+            Trace.WriteLine(string.Join("-", ints));
+            GameEvents.ForcedRolls = ints.ToList();
+
+        }
+
+        public static void UpdateRollsCheatBox() {
+            int i = 0;
+            foreach(char c in rollsCheatBox.Text) {
+                i++;
+                if (c == ' ') break;
+            }
+            rollsCheatBox.Text = rollsCheatBox.Text.Remove(0, i);
+        }
+
+        private void RulesCloseBtn_RightTapped(object sender, RightTappedRoutedEventArgs e) {
+            CheatPanel.Visibility = CheatPanel.Visibility == Visibility ? Visibility.Collapsed : Visibility.Visible;
+        }
     }
 }

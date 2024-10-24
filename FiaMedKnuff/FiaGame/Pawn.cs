@@ -42,7 +42,9 @@ namespace FiaMedKnuff.FiaGame {
         /// <param name="to">Tile to set position to</param>
         public void SetTile(Tile to) {
             Tile from = CurrentTile;
-            if (to.Stander != null) {
+            if (from == to) return;
+
+            if (to.Stander != null && to.Stander != this) {
                 to.Stander.Shove();
             }
             from.Stander = null; to.Stander = this;
@@ -132,6 +134,7 @@ namespace FiaMedKnuff.FiaGame {
             for(int i = 0; i < 4; i++) {
                 Tile tile = GameManager.CurrentGame.Tiles[SpaceType.Home][i + homeSpace];
                 if (tile.Stander == null) {
+                    SpaceInPath = 0;
                     SetTile(tile);
                     break;
                 }
@@ -150,6 +153,42 @@ namespace FiaMedKnuff.FiaGame {
             GamePage.UpdatePawnSlots(Team);
 
             Team.WinCheck();
+        }
+
+        /// <summary>
+        /// Returns whether it is possible for this pawn to move
+        /// </summary>
+        /// <returns></returns>
+        public bool CanMove() {
+            if (CurrentTile.SpaceType == SpaceType.Home) {
+                if(GameManager.CurrentDieNumber != 1 && GameManager.CurrentDieNumber != 6) {
+                    Trace.WriteLine("Can't move due to die not being 1 or 6.");
+                    return false;
+                }
+
+                Tile startTile = Team.Path[0]; // Previously: GameManager.CurrentGame.Tiles[SpaceType.Surrounding][Team.StartingSpace]
+                if (GameManager.CurrentDieNumber == 1 && startTile.Stander?.Team == Team) {
+                    Trace.WriteLine("Can't move due to busy starting space.");
+                    return false;
+                }
+            }
+            Tile nextTile = Team.Path[Math.Clamp(SpaceInPath + 1, 0, Team.Path.Count - 1)];
+            if (nextTile.Stander?.Team == Team) {
+                Trace.WriteLine("Can't move due to busy front space.");
+                return false;
+            }
+
+            if (SpaceInPath + GameManager.CurrentDieNumber > Team.Path.Count - 1) {
+                var count = Team.Path.Count - 1;
+                var newSpace = count - (SpaceInPath + GameManager.CurrentDieNumber) % count;
+                if (Team.Path[newSpace].Stander?.Team == Team) {
+                    Trace.WriteLine($"Can't move due to teammate on pushback tile.");
+                    return false;
+                }
+            }
+
+                Trace.WriteLine("Can move!");
+            return true;
         }
      }
 }
