@@ -47,6 +47,8 @@ namespace FiaMedKnuff {
             dieButton = DieButton;
 
             RollDiePopupElement = RollDiePopup;
+
+            RollingAnimationCheckElement = RollingAnimationCheck;
             
         }
         private DispatcherTimer timer;
@@ -74,6 +76,10 @@ namespace FiaMedKnuff {
         private static Button dieButton;
 
         public static Popup RollDiePopupElement;
+
+        public static bool DieRollAnimationEnabled = true;
+
+        private static CheckBox RollingAnimationCheckElement;
       
         /// <summary>
         /// Opens the RollDiePopup and handles the die roll animation.
@@ -299,6 +305,14 @@ namespace FiaMedKnuff {
 
         private void RulesCloseBtn_RightTapped(object sender, RightTappedRoutedEventArgs e) {
             CheatPanel.Visibility = CheatPanel.Visibility == Visibility ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void RollingAnimationCheck_Checked(object sender, RoutedEventArgs e) {
+            DieRollAnimationEnabled = true;
+        }
+
+        private void RollingAnimationCheck_Unchecked(object sender, RoutedEventArgs e) {
+            DieRollAnimationEnabled = false;
         }
     }
 }
