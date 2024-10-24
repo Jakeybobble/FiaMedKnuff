@@ -74,35 +74,6 @@ namespace FiaMedKnuff {
         private static Button dieButton;
 
         public static Popup RollDiePopupElement;
-
-        
-        /*
-        private void DieButton_Click(object sender, RoutedEventArgs e)
-        {
-            RollDiePopup.IsOpen = true;
-
-            // Timer to auto close DieRollAnimation.
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1.9); // 2 seconds delay
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-        */
-
-        /// <summary>
-        /// Closes the RollDiePopup, stops the timer, and gives die result outputs to user.
-        /// </summary>
-        private void Timer_Tick(object sender, object e)
-        {
-            RollDiePopup.IsOpen = false;
-
-            // Stops the timer to prevent multiple ticks.
-            timer.Stop();
-
-            //int dieThrow = GameEvents.OnDieClicked();
-            // Sets the image of the die.
-          
-        }
       
         /// <summary>
         /// Opens the RollDiePopup and handles the die roll animation.
