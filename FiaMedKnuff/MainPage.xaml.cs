@@ -72,7 +72,7 @@ namespace FiaMedKnuff
             var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
             element.SetSource(stream, "");
             element.Volume=0.02;
-            element.IsLooping=true;
+        
             element.Play();
 
 
