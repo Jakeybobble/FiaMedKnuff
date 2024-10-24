@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
+using Windows.Media.Playback;
+using Windows.Media.Core;
 
 namespace FiaMedKnuff {
     /// <summary>
@@ -42,8 +45,11 @@ namespace FiaMedKnuff {
             rollsCheatBox = RollsCheatBox;
 
             dieButton = DieButton;
+
+            RollDiePopupElement = RollDiePopup;
             
         }
+        private DispatcherTimer timer;
 
         public static TextBlock changeOutputText;
         public static Popup dieDecisionPopup;
@@ -67,8 +73,10 @@ namespace FiaMedKnuff {
 
         private static Button dieButton;
 
+        public static Popup RollDiePopupElement;
+      
         /// <summary>
-        /// Matches the visual of the die to the result rolled.
+        /// Opens the RollDiePopup and handles the die roll animation.
         /// </summary>
         private async void DieButton_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +95,8 @@ namespace FiaMedKnuff {
                 dieButton.Background = img;
             }
         }
-              
+
+
         /// <summary>
         /// Gives the Glow Effect on the Die when it needs to be pressed by the user.
         /// </summary>
@@ -102,8 +111,7 @@ namespace FiaMedKnuff {
         /// Ends the Glow Effect after the die has been pressed.
         /// </summary>
         public static void EndGlowEffectDie()
-        {
-            Trace.WriteLine("Entered EndGlow!");
+        {            
             DieBtnBorder.Background = new SolidColorBrush(Windows.UI.Colors.Orange);
             DieBtnBorder.BorderBrush = new SolidColorBrush(Windows.UI.Colors.Orange);
         }
@@ -232,6 +240,9 @@ namespace FiaMedKnuff {
 
             DieResultDecisionPopupBackground.Width = ParentGrid.ActualWidth;
             DieResultDecisionPopupBackground.Height = ParentGrid.ActualHeight;
+
+            DieAnimationPopupBackground.Width = ParentGrid.ActualWidth;
+            DieAnimationPopupBackground.Height = ParentGrid.ActualHeight;
         }
 
         /// <summary>
